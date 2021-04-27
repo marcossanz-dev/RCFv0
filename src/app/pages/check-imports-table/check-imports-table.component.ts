@@ -1,27 +1,164 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { DATA_HEADER, ELEMENT_DATA } from './check-imports-table.enums';
+
+import { ResizeEvent } from 'angular-resizable-element';
 
 @Component({
   selector: 'app-check-imports-table',
   templateUrl: './check-imports-table.component.html',
   styleUrls: ['./check-imports-table.component.scss'],
 })
-export class CheckImportsTableComponent implements AfterViewInit {
+export class CheckImportsTableComponent implements AfterViewInit, OnInit {
   dataHeader = DATA_HEADER;
   displayedColumns: string[] = this.dataHeader.map((item) => {
     return item.element;
   });
+  columns = this.dataHeader.map((item, index) => {
+    return { field: item.element, width: 200, index: index };
+  });
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  pressed = false;
+  currentResizeIndex: number;
+  startX: number;
+  startWidth: number;
+  isResizingRight: boolean;
+  resizableMousemove: () => void;
+  resizableMouseup: () => void;
+
+  @ViewChild(MatTable, { read: ElementRef }) private matTableRef: ElementRef;
 
   @ViewChild(MatSort)
   sort!: MatSort;
 
+  constructor(private renderer: Renderer2) {}
+
+  ngOnInit() {
+    this.setDisplayedColumns();
+  }
+
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    this.setTableResize(this.matTableRef.nativeElement.clientWidth);
   }
   setAll(event: any) {
     console.log(event);
+  }
+
+  setTableResize(tableWidth: number) {
+    let totWidth = 0;
+    this.columns.forEach((column) => {
+      totWidth += column.width;
+    });
+    const scale = (tableWidth - 5) / totWidth;
+    this.columns.forEach((column) => {
+      column.width *= scale;
+      this.setColumnWidth(column);
+    });
+  }
+
+  setDisplayedColumns() {
+    this.columns.forEach((column, index) => {
+      column.index = index;
+      this.displayedColumns[index] = column.field;
+    });
+  }
+
+  onResizeColumn(event: any, index: number) {
+    this.checkResizing(event, index);
+    this.currentResizeIndex = index;
+    this.pressed = true;
+    this.startX = event.pageX;
+    this.startWidth = event.target.clientWidth;
+    event.preventDefault();
+    this.mouseMove(index);
+  }
+
+  private checkResizing(event, index) {
+    const cellData = this.getCellData(index);
+    if (
+      index === 0 ||
+      (Math.abs(event.pageX - cellData.right) < cellData.width / 2 &&
+        index !== this.columns.length - 1)
+    ) {
+      this.isResizingRight = true;
+    } else {
+      this.isResizingRight = false;
+    }
+  }
+
+  private getCellData(index: number) {
+    const headerRow = this.matTableRef.nativeElement.children[0];
+    const cell = headerRow.children[0].children[index];
+    return cell.getBoundingClientRect();
+  }
+
+  mouseMove(index: number) {
+    this.resizableMousemove = this.renderer.listen(
+      'document',
+      'mousemove',
+      (event) => {
+        if (this.pressed && event.buttons) {
+          const dx = this.isResizingRight
+            ? event.pageX - this.startX
+            : -event.pageX + this.startX;
+          const width = this.startWidth + dx;
+          if (this.currentResizeIndex === index && width > 50) {
+            this.setColumnWidthChanges(index, width);
+          }
+        }
+      }
+    );
+    this.resizableMouseup = this.renderer.listen(
+      'document',
+      'mouseup',
+      (event) => {
+        if (this.pressed) {
+          this.pressed = false;
+          this.currentResizeIndex = -1;
+          this.resizableMousemove();
+          this.resizableMouseup();
+        }
+      }
+    );
+  }
+
+  setColumnWidthChanges(index: number, width: number) {
+    const orgWidth = this.columns[index].width;
+    const dx = width - orgWidth;
+    if (dx !== 0) {
+      const j = this.isResizingRight ? index + 1 : index - 1;
+      const newWidth = this.columns[j].width - dx;
+      if (newWidth > 50) {
+        this.columns[index].width = width;
+        this.setColumnWidth(this.columns[index]);
+        this.columns[j].width = newWidth;
+        this.setColumnWidth(this.columns[j]);
+      }
+    }
+  }
+
+  setColumnWidth(column: any) {
+    const columnEls = Array.from(
+      document.getElementsByClassName('mat-column-' + column.field)
+    );
+    columnEls.forEach((el: HTMLDivElement) => {
+      el.style.width = column.width + 'px';
+    });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.setTableResize(this.matTableRef.nativeElement.clientWidth);
   }
 }
