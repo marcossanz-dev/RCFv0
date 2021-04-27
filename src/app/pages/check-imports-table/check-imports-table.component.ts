@@ -59,7 +59,7 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
     this.columns.forEach((column) => {
       totWidth += column.width;
     });
-    const scale = (tableWidth - 5) / totWidth;
+    //const scale = (tableWidth - 5) / totWidth;
     this.columns.forEach((column) => {
       // column.width *= scale;
       this.setColumnWidth(column);
@@ -155,6 +155,8 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
       if (el.children[0] && column.width >= this.minWidth) {
         el.style.width = column.width + 'px';
         el.children[0].style.width = column.width + 'px';
+        el.style.maxWidth = column.width + 'px';
+        el.children[0].style.maxWidth = column.width + 'px';
       }
     });
   }

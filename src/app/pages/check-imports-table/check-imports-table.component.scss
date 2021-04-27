@@ -41,8 +41,7 @@ th {
   }
 }
 .span-class {
-  white-space: nowrap;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 .mat-elevation-z8 ::ng-deep {
   overflow-x: auto;
@@ -54,6 +53,11 @@ th {
       overflow: hidden;
     }
   }
+}
+
+td {
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 th.mat-sort-header-sorted {

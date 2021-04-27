@@ -32,7 +32,7 @@ export const ELEMENT_DATA: CheckImportsElement[] = [
     attemps: '45',
     extrDate: '12/05/2021',
     movements: '2',
-    action: 'MOVE STEP',
+    action: 'MOVE STEP MOVE STEP MOVE STEP MOVE STEP MOVE STEP MOVE STEP',
     accepted: '3',
     rejected: '2',
     signedUps: '4',
