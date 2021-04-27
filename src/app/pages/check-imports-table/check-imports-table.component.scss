@@ -1,15 +1,37 @@
 :host {
   width: 100%;
-  display: block;
-  overflow: scroll;
 }
 table {
   width: 100%;
+  display: block;
+  overflow: auto;
 }
-.mat-elevation-z8 {
+
+th.mat-header-cell,
+td {
+  border: 1px solid;
+  text-align: center;
+}
+th {
+  ::ng-deep {
+    div {
+      justify-content: center;
+    }
+  }
+}
+.span-class {
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+.mat-elevation-z8 ::ng-deep {
   overflow-x: auto;
   td {
-    min-width: 0;
+    min-width: 150px;
+    .mat-sort-header-container {
+      min-width: 150px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
   }
 }
 

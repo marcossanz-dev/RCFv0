@@ -24,7 +24,7 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
     return item.element;
   });
   columns = this.dataHeader.map((item, index) => {
-    return { field: item.element, width: 250, index: index };
+    return { field: item.element, width: 150, index: index };
   });
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
@@ -35,6 +35,7 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
   isResizingRight: boolean;
   resizableMousemove: () => void;
   resizableMouseup: () => void;
+  minWidth = 150;
 
   @ViewChild(MatTable, { read: ElementRef }) private matTableRef: ElementRef;
 
@@ -51,9 +52,7 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
     this.dataSource.sort = this.sort;
     this.setTableResize(this.matTableRef.nativeElement.clientWidth);
   }
-  setAll(event: any) {
-    console.log(event);
-  }
+  setAll(event: any) {}
 
   setTableResize(tableWidth: number) {
     let totWidth = 0;
@@ -62,7 +61,7 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
     });
     const scale = (tableWidth - 5) / totWidth;
     this.columns.forEach((column) => {
-      column.width *= scale;
+      // column.width *= scale;
       this.setColumnWidth(column);
     });
   }
@@ -152,8 +151,11 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
     const columnEls = Array.from(
       document.getElementsByClassName('mat-column-' + column.field)
     );
-    columnEls.forEach((el: HTMLDivElement) => {
-      el.style.width = column.width + 'px';
+    columnEls.forEach((el: any) => {
+      if (el.children[0] && column.width >= this.minWidth) {
+        el.style.width = column.width + 'px';
+        el.children[0].style.width = column.width + 'px';
+      }
     });
   }
 

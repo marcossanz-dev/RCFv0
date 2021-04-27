@@ -12,9 +12,11 @@
       {{ el.title }}
     </th>
     <td mat-cell *matCellDef="let element">
-      <ng-container *ngIf="!el.isCheck; else checkboxTemp">{{
-        element[el.element]
-      }}</ng-container>
+      <ng-container *ngIf="!el.isCheck; else checkboxTemp"
+        ><span class="w-100 span-class">{{
+          element[el.element]
+        }}</span></ng-container
+      >
       <ng-template #checkboxTemp>
         <input
           type="checkbox"
