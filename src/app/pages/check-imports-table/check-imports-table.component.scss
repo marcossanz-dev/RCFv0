@@ -1,8 +1,16 @@
 :host {
   width: 100%;
+  display: block;
+  overflow: scroll;
 }
 table {
   width: 100%;
+}
+.mat-elevation-z8 {
+  overflow-x: auto;
+  td {
+    min-width: 0;
+  }
 }
 
 th.mat-sort-header-sorted {

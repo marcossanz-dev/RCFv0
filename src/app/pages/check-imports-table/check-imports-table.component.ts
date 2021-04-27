@@ -24,7 +24,7 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
     return item.element;
   });
   columns = this.dataHeader.map((item, index) => {
-    return { field: item.element, width: 200, index: index };
+    return { field: item.element, width: 250, index: index };
   });
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
