@@ -9,15 +9,12 @@ import { DATA_HEADER, ELEMENT_DATA } from './check-imports-table.enums';
   styleUrls: ['./check-imports-table.component.scss'],
 })
 export class CheckImportsTableComponent implements AfterViewInit {
-  displayedColumns: string[] = [
-    'position',
-    'name',
-    'weight',
-    'symbol',
-    'toxic',
-  ];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
   dataHeader = DATA_HEADER;
+  displayedColumns: string[] = this.dataHeader.map((item) => {
+    return item.element;
+  });
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
   @ViewChild(MatSort)
   sort!: MatSort;
 
