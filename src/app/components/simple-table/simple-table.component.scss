@@ -1,0 +1,59 @@
+.ca-table {
+    width: 100%;
+    font-size: 14px;
+    border-collapse: collapse;
+    border: 1px solid #d0d2d3;
+    &__row {
+      &:nth-child(odd) {
+        background-color: #eef2f5;
+      }
+      &:nth-child(even) {
+        background-color: #ffffff;
+      }
+      &:hover {
+        background-color: #dcf1f0;
+      }
+      &--bordered {
+        border-bottom: 1px solid #d0d2d3;
+      }
+      &--clean {
+        &:nth-child(odd) {
+          background-color: #ffffff;
+        }
+        &:hover {
+          background-color: inherit;
+        }
+      }
+    }
+    &__header {
+      padding: 6px 16px;
+      text-align: left;
+      background-color: #ffffff;
+
+      &-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      &-text {
+        white-space: nowrap;
+      }
+    }
+    &__cell {
+      cursor: pointer;
+      height: 32px;
+      position: relative;
+      padding: 0 16px;
+      vertical-align: middle;
+      max-width: 90px;
+      &-container {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      &-text {
+        white-space: nowrap;
+      }
+    }
+}
