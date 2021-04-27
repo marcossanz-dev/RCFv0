@@ -1,0 +1,25 @@
+<table mat-table [dataSource]="tableData" class="ca-table">
+    <ng-container *ngFor="let column of columns; let i = index" [matColumnDef]="column.field">
+      <th mat-header-cell *matHeaderCellDef class="ca-table__header">
+        <div class="ca-table__header-container justify-content-start">
+          <span class="ca-table__header-wrapper">
+            <span class="ca-table__header-text">{{ column.value }}</span>
+          </span>
+        </div>
+      </th>
+      <td mat-cell *matCellDef="let row; let i = index" class="ca-table__cell">
+        <div class="ca-table__cell-container">
+          <span class="ca-table__cell-text">
+            {{ row[column.field] }}
+          </span>
+        </div>
+      </td>
+    </ng-container>
+    <thead class="ca-table__thead">
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"
+        class="ca-table__row ca-table__row--bordered ca-table__row--clean"></tr>
+    </thead>
+    <tbody class="ca-table__tbody">
+      <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index" class="ca-table__row"></tr>
+    </tbody>
+  </table>

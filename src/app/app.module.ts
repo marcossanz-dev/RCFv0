@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MenuComponent } from './components/menu/menu.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { SimpleTableComponent } from './components/simple-table/simple-table.component';
 
 import { MatTableModule } from '@angular/material/table';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -17,7 +20,13 @@ import { CheckImportsTableComponent } from './pages/check-imports-table/check-im
 import { ResizableModule } from 'angular-resizable-element';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, CheckImportsTableComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    CheckImportsTableComponent,
+    MenuComponent,
+    SimpleTableComponent,
+  ],
   imports: [
     BrowserModule,
     CdkTableModule,
@@ -27,6 +36,7 @@ import { ResizableModule } from 'angular-resizable-element';
     BrowserAnimationsModule,
     NoopAnimationsModule,
     ResizableModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
