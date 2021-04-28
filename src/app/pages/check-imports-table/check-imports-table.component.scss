@@ -5,8 +5,8 @@ table {
   width: 100%;
   display: block;
   overflow: auto;
-  border: 1px solid;
-  border-top: 0px;
+  border: 0.0625rem solid;
+  border-top: 0;
 }
 .mat-row:hover {
   background-color: rgb(166, 230, 241);
@@ -18,7 +18,7 @@ table {
 }
 
 .title-padding {
-  padding-left: 16px;
+  padding-left: 1rem;
 }
 
 .head-color {
@@ -27,16 +27,18 @@ table {
 
 th.mat-header-cell,
 td {
-  border-right: 1px solid #fff;
-  border-left: 1px solid #fff;
-  border-bottom: 1px solid #000;
-  border-top: 1px solid #000;
+  border-right: 0.0625rem solid #fff;
+  border-left: 0.0625rem solid #fff;
+  border-bottom: 0.0625rem solid #000;
+  border-top: 0.0625rem solid #000;
   text-align: center;
 }
 th {
   ::ng-deep {
+    max-width: 34.375rem;
     div {
       justify-content: center;
+      max-width: 34.375rem;
     }
   }
 }
@@ -46,9 +48,9 @@ th {
 .mat-elevation-z8 ::ng-deep {
   overflow-x: auto;
   td {
-    min-width: 150px;
+    min-width: 9.375rem;
     .mat-sort-header-container {
-      min-width: 150px;
+      min-width: 9.375rem;
       white-space: nowrap;
       overflow: hidden;
     }

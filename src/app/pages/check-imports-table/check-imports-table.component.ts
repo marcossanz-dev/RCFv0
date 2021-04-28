@@ -11,8 +11,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { DATA_HEADER, ELEMENT_DATA } from './check-imports-table.enums';
 
-import { ResizeEvent } from 'angular-resizable-element';
-
 @Component({
   selector: 'app-check-imports-table',
   templateUrl: './check-imports-table.component.html',
@@ -149,8 +147,6 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
       if (el.children[0] && column.width >= this.minWidth) {
         el.style.width = column.width + 'px';
         el.children[0].style.width = column.width + 'px';
-        el.style.maxWidth = column.width + 'px';
-        el.children[0].style.maxWidth = column.width + 'px';
       }
     });
   }
