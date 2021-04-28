@@ -27,16 +27,24 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   pressed = false;
-  currentResizeIndex: number;
-  startX: number;
-  startWidth: number;
-  isResizingRight: boolean;
-  resizableMousemove: () => void;
-  resizableMouseup: () => void;
+  currentResizeIndex: number = 0;
+  startX: number = 0;
+  startWidth: number = 0;
+  isResizingRight: boolean = true;
+  resizableMousemove: () => void = this.renderer.listen(
+    'document',
+    'mousemove',
+    (event) => {}
+  );
+  resizableMouseup: () => void = this.renderer.listen(
+    'document',
+    'mouseup',
+    (event) => {}
+  );
   minWidth = 150;
   maxWidth = 550;
 
-  @ViewChild(MatTable, { read: ElementRef }) private matTableRef: ElementRef;
+  @ViewChild(MatTable, { read: ElementRef }) private matTableRef?: ElementRef;
 
   @ViewChild(MatSort)
   sort!: MatSort;
@@ -49,7 +57,7 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
-    this.setTableResize(this.matTableRef.nativeElement.clientWidth);
+    this.setTableResize(this.matTableRef?.nativeElement.clientWidth);
   }
   setAll(event: any) {}
 
@@ -76,7 +84,7 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
     this.mouseMove(index);
   }
 
-  private checkResizing(event, index) {
+  private checkResizing(event: any, index: number) {
     const cellData = this.getCellData(index);
     if (
       index === 0 ||
@@ -90,7 +98,7 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
   }
 
   private getCellData(index: number) {
-    const headerRow = this.matTableRef.nativeElement.children[0];
+    const headerRow = this.matTableRef?.nativeElement.children[0];
     const cell = headerRow.children[0].children[index];
     return cell.getBoundingClientRect();
   }
@@ -159,7 +167,7 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.setTableResize(this.matTableRef.nativeElement.clientWidth);
+  onResize(event: any) {
+    this.setTableResize(this.matTableRef?.nativeElement.clientWidth);
   }
 }
