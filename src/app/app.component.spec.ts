@@ -5,14 +5,43 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {} from 'jest-image-snapshot';
 import { SimpleTableComponent } from './components/simple-table/simple-table.component';
 import { LoginComponent } from './pages/login/login.component';
+import { MatTableModule } from '@angular/material/table';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSortModule } from '@angular/material/sort';
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule,
+} from '@angular/platform-browser/animations';
+import { ResizableModule } from 'angular-resizable-element';
+import { MatMenuModule } from '@angular/material/menu';
+import { BrowserModule } from '@angular/platform-browser';
+import { CheckImportsTableComponent } from './pages/check-imports-table/check-imports-table.component';
 
 describe('AppComponent functions', () => {
   let fixture: ComponentFixture<AppComponent>;
   let component: AppComponent;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientModule],
-      declarations: [AppComponent, LoginComponent],
+      imports: [
+        RouterTestingModule,
+        HttpClientModule,
+        BrowserModule,
+        CdkTableModule,
+        MatCheckboxModule,
+        MatSortModule,
+        MatTableModule,
+        BrowserAnimationsModule,
+        NoopAnimationsModule,
+        ResizableModule,
+        MatMenuModule,
+      ],
+      declarations: [
+        AppComponent,
+        LoginComponent,
+        SimpleTableComponent,
+        CheckImportsTableComponent,
+      ],
     }).compileComponents();
   });
 
