@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { DATA_HEADER, ELEMENT_DATA } from './check-imports-table.enums';
+import { DATA_HEADER, ELEMENT_DATA } from './models/check-imports-table.enums';
 
 @Component({
   selector: 'app-check-imports-table',
