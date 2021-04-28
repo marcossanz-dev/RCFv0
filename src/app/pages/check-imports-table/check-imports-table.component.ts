@@ -55,13 +55,7 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
   setAll(event: any) {}
 
   setTableResize(tableWidth: number) {
-    let totWidth = 0;
     this.columns.forEach((column) => {
-      totWidth += column.width;
-    });
-    //const scale = (tableWidth - 5) / totWidth;
-    this.columns.forEach((column) => {
-      // column.width *= scale;
       this.setColumnWidth(column);
     });
   }
