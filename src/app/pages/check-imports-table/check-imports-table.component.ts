@@ -34,6 +34,7 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
   resizableMousemove: () => void;
   resizableMouseup: () => void;
   minWidth = 150;
+  maxWidth = 550;
 
   @ViewChild(MatTable, { read: ElementRef }) private matTableRef: ElementRef;
 
@@ -144,9 +145,15 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
       document.getElementsByClassName('mat-column-' + column.field)
     );
     columnEls.forEach((el: any) => {
-      if (el.children[0] && column.width >= this.minWidth) {
+      if (
+        el.children[0] &&
+        column.width >= this.minWidth &&
+        column.width <= this.maxWidth
+      ) {
         el.style.width = column.width + 'px';
         el.children[0].style.width = column.width + 'px';
+        el.style.maxWidth = column.width + 'px';
+        el.children[0].style.maxWidth = column.width + 'px';
       }
     });
   }
