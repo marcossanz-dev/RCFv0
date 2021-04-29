@@ -10,7 +10,7 @@ import {
   BrowserAnimationsModule,
   NoopAnimationsModule,
 } from '@angular/platform-browser/animations';
-import { ResizableModule } from 'angular-resizable-element';
+import { ResizableModule, ResizeEvent } from 'angular-resizable-element';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -48,7 +48,29 @@ describe('CheckImportsTableComponent', () => {
   test('check resize function parameters', () => {
     const spyResize = jest.spyOn(component, 'onResizeEnd');
     const element = document.getElementsByTagName('th');
+    let event = {} as ResizeEvent;
     element[0].dispatchEvent(new Event('resizeEnd'));
     expect(spyResize).toHaveBeenCalled();
+    component.onResizeEnd(event, null);
+    expect(spyResize).toReturn();
+    event = {
+      edges: {},
+      rectangle: { top: 0, bottom: 50, left: 0, right: 100 },
+    };
+    component.onResizeEnd(event, null);
+    expect(spyResize).toReturn();
+    event = {
+      edges: { top: 0, bottom: 50, left: 0, right: 100 },
+      rectangle: { top: 0, bottom: 50, left: 0, right: 100 },
+    };
+    component.onResizeEnd(event, null);
+    expect(spyResize).toReturn();
+    event = {
+      edges: { top: 0, bottom: 50, left: 0, right: 100 },
+      rectangle: { top: 0, bottom: 50, left: 0, right: 100, width: 100 },
+    };
+    component.maxWidth = 50;
+    component.onResizeEnd(event, null);
+    expect(spyResize).toReturn();
   });
 });

@@ -44,8 +44,14 @@ export class CheckImportsTableComponent implements AfterViewInit {
             currentEl.style.width = cssValue;
             currentEl.children[0].style.width = cssValue;
           }
+        } else {
+          return;
         }
+      } else {
+        return;
       }
+    } else {
+      return;
     }
   }
 }
