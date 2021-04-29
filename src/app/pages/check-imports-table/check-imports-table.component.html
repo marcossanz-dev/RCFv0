@@ -5,7 +5,11 @@
   >
     <th
       mat-header-cell
-      (mousedown)="onResizeColumn($event, i)"
+      mat-sort-header
+      mwlResizable
+      [enableGhostResize]="true"
+      (resizeEnd)="onResizeEnd($event, el.element)"
+      [resizeEdges]="{ bottom: false, right: true, top: false, left: true }"
       *matHeaderCellDef
       mat-sort-header
     >
@@ -34,7 +38,14 @@
   <tr
     mat-row
     class="mat-row"
+    matRipple
+    id="row-{{ index }}"
     [ngClass]="{ 'odd-color': odd }"
-    *matRowDef="let row; let odd = odd; columns: displayedColumns"
+    *matRowDef="
+      let row;
+      let odd = odd;
+      columns: displayedColumns;
+      let index = index
+    "
   ></tr>
 </table>
