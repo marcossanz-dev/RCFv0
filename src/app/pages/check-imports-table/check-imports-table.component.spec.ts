@@ -44,4 +44,11 @@ describe('CheckImportsTableComponent', () => {
   test('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  test('check resize function parameters', () => {
+    const spyResize = jest.spyOn(component, 'onResizeEnd');
+    const element = document.getElementsByTagName('th');
+    element[0].dispatchEvent(new Event('resizeEnd'));
+    expect(spyResize).toHaveBeenCalled();
+  });
 });

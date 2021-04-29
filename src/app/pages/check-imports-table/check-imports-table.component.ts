@@ -1,15 +1,6 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  HostListener,
-  Input,
-  OnInit,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { ResizeEvent } from 'angular-resizable-element';
 import { DATA_HEADER, ELEMENT_DATA } from './models/check-imports-table.enums';
 
@@ -39,7 +30,7 @@ export class CheckImportsTableComponent implements AfterViewInit {
   }
 
   onResizeEnd(event: ResizeEvent, columnName: any): void {
-    if (event.edges.right) {
+    if (event.edges?.right) {
       if (event.rectangle.width) {
         if (event.rectangle.width <= this.maxWidth) {
           const cssValue = event.rectangle.width + 'px';
