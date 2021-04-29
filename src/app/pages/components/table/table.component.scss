@@ -1,0 +1,21 @@
+.table-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+}
+
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+th,
+td {
+    padding: 10px !important;
+}
+
+.mat-row:hover {
+    background-color: rgb(166, 230, 241);
+    cursor: pointer;
+}
