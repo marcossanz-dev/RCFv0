@@ -40,16 +40,20 @@ export class CheckImportsTableComponent implements AfterViewInit {
 
   onResizeEnd(event: ResizeEvent, columnName: any): void {
     if (event.edges.right) {
-      const cssValue = event.rectangle.width + 'px';
-      const columnElts = document.getElementsByClassName(
-        'mat-column-' + columnName
-      );
-      for (let i = 0; i < columnElts.length; i++) {
-        const currentEl = columnElts[i] as any;
-        currentEl.style.maxWidth = cssValue;
-        currentEl.children[0].style.maxWidth = cssValue;
-        currentEl.style.width = cssValue;
-        currentEl.children[0].style.width = cssValue;
+      if (event.rectangle.width) {
+        if (event.rectangle.width <= this.maxWidth) {
+          const cssValue = event.rectangle.width + 'px';
+          const columnElts = document.getElementsByClassName(
+            'mat-column-' + columnName
+          );
+          for (let i = 0; i < columnElts.length; i++) {
+            const currentEl = columnElts[i] as any;
+            currentEl.style.maxWidth = cssValue;
+            currentEl.children[0].style.maxWidth = cssValue;
+            currentEl.style.width = cssValue;
+            currentEl.children[0].style.width = cssValue;
+          }
+        }
       }
     }
   }
