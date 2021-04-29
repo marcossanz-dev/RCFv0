@@ -30,12 +30,12 @@ export class CheckImportsTableComponent implements AfterViewInit {
   }
 
   onResizeEnd(event: ResizeEvent, columnName: any): void {
-    if (
-      event.edges?.right &&
-      event.rectangle.width &&
-      event.rectangle.width <= this.maxWidth
-    ) {
-      this.setElementWith(event.rectangle.width, columnName);
+    if (event.edges?.right) {
+      if (event.rectangle.width && event.rectangle.width <= this.maxWidth) {
+        this.setElementWith(event.rectangle.width, columnName);
+      } else {
+        return;
+      }
     } else {
       return;
     }
