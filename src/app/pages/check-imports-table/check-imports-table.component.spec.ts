@@ -73,4 +73,15 @@ describe('CheckImportsTableComponent', () => {
     component.onResizeEnd(event, null);
     expect(spyResize).toReturn();
   });
+
+  test('check resize inner function', () => {
+    const spySetElementWith = jest.spyOn(component, 'setElementWith');
+    const event = {
+      edges: { top: 0, bottom: 50, left: 0, right: 100 },
+      rectangle: { top: 0, bottom: 50, left: 0, right: 100, width: 100 },
+    } as ResizeEvent;
+    component.maxWidth = 150;
+    component.onResizeEnd(event, null);
+    expect(spySetElementWith).toHaveBeenCalledWith(100, null);
+  });
 });
