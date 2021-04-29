@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   HostListener,
+  Input,
   OnInit,
   Renderer2,
   ViewChild,
@@ -41,8 +42,8 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
     'mouseup',
     (event) => {}
   );
-  minWidth = 150;
-  maxWidth = 550;
+  @Input() minWidth = 150;
+  @Input() maxWidth = 550;
 
   @ViewChild(MatTable, { read: ElementRef }) private matTableRef?: ElementRef;
 
@@ -59,7 +60,6 @@ export class CheckImportsTableComponent implements AfterViewInit, OnInit {
     this.dataSource.sort = this.sort;
     this.setTableResize(this.matTableRef?.nativeElement.clientWidth);
   }
-  setAll(event: any) {}
 
   setTableResize(tableWidth: number) {
     this.columns.forEach((column) => {
