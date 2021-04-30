@@ -1,1 +1,5 @@
-{}
+{
+  "baseUrl": "http://localhost:4200",
+  "username": "RFCTeam-capgemini",
+  "password": "pass112233"
+}
