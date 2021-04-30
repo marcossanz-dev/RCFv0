@@ -7,8 +7,6 @@ describe("Main functionalities", () => {
     cy.get("[formControlName=password").type(Cypress.config("password"));
     cy.get(".submit-button").click();
     cy.wait(3000);
-    cy.url().then((url) =>
-      assert.equal(url, `${baseUrl}/'check-imports-table'`)
-    );
+    cy.url().then((url) => assert.equal(url, `${baseUrl}/check-imports-table`));
   });
 });
