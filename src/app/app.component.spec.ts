@@ -17,6 +17,7 @@ import { ResizableModule } from 'angular-resizable-element';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
 import { CheckImportsTableComponent } from './pages/check-imports-table/check-imports-table.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('AppComponent functions', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -35,6 +36,9 @@ describe('AppComponent functions', () => {
         NoopAnimationsModule,
         ResizableModule,
         MatMenuModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        RouterTestingModule,
       ],
       declarations: [
         AppComponent,

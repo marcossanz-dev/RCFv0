@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MenuComponent } from './components/menu/menu.component';
@@ -18,6 +19,7 @@ import { CheckImportsTableComponent } from './pages/check-imports-table/check-im
 import { ResizableModule } from 'angular-resizable-element';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { LoginComponent } from './pages/login/login.component';
     NoopAnimationsModule,
     ResizableModule,
     MatMenuModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
