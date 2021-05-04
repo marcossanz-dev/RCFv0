@@ -1,0 +1,63 @@
+:host {
+  width: 100%;
+}
+table {
+  width: 100%;
+  display: block;
+  overflow: auto;
+  border: 0.0625rem solid;
+  border-top: 0;
+}
+.mat-row:hover {
+  background-color: rgb(166, 230, 241);
+  cursor: pointer;
+}
+
+.odd-color {
+  background-color: rgb(213, 247, 239);
+}
+
+.title-padding {
+  padding-left: 1rem;
+}
+
+.head-color {
+  background-color: beige;
+}
+
+th.mat-header-cell,
+td {
+  border-right: 0.0625rem solid #fff;
+  border-left: 0.0625rem solid #fff;
+  border-bottom: 0.0625rem solid #000;
+  border-top: 0.0625rem solid #000;
+  text-align: center;
+}
+th {
+  ::ng-deep {
+    div {
+      justify-content: center;
+    }
+  }
+}
+.span-class {
+  overflow: hidden;
+}
+.mat-elevation-z8 ::ng-deep {
+  overflow-x: auto;
+  td {
+    .mat-sort-header-container {
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}
+
+td {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
