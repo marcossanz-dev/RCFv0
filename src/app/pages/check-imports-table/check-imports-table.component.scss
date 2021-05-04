@@ -1,63 +1,68 @@
-:host {
+.ca-table {
   width: 100%;
-}
-table {
-  width: 100%;
-  display: block;
-  overflow: auto;
-  border: 0.0625rem solid;
-  border-top: 0;
-}
-.mat-row:hover {
-  background-color: rgb(166, 230, 241);
-  cursor: pointer;
-}
+  font-size: 14px;
+  border-collapse: initial;
+  border: 1px solid #d0d2d3;
+  &__row {
+    &:nth-child(odd) {
+      background-color: #eef2f5;
+    }
+    &:nth-child(even) {
+      background-color: #ffffff;
+    }
+    &:hover {
+      background-color: #dcf1f0;
+    }
+    &--bordered {
+      border-bottom: 1px solid #d0d2d3;
+    }
+    &--clean {
+      &:nth-child(odd) {
+        background-color: #ffffff;
+      }
+      &:hover {
+        background-color: inherit;
+      }
+    }
+  }
+  &__header {
+    padding: 6px 16px;
+    text-align: left;
+    background-color: #003333;
+    color: #ffffff;
 
-.odd-color {
-  background-color: rgb(213, 247, 239);
-}
-
-.title-padding {
-  padding-left: 1rem;
-}
-
-.head-color {
-  background-color: beige;
-}
-
-th.mat-header-cell,
-td {
-  border-right: 0.0625rem solid #fff;
-  border-left: 0.0625rem solid #fff;
-  border-bottom: 0.0625rem solid #000;
-  border-top: 0.0625rem solid #000;
-  text-align: center;
-}
-th {
-  ::ng-deep {
-    div {
+    &-container {
+      display: flex;
       justify-content: center;
-    }
-  }
-}
-.span-class {
-  overflow: hidden;
-}
-.mat-elevation-z8 ::ng-deep {
-  overflow-x: auto;
-  td {
-    .mat-sort-header-container {
-      white-space: nowrap;
+      align-items: center;
       overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &-text {
+      white-space: nowrap;
     }
   }
+  &__cell {
+    cursor: pointer;
+    height: 32px;
+    position: relative;
+    padding: 0 16px;
+    vertical-align: middle;
+    max-width: 90px;
+    &-container {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &-text {
+      white-space: nowrap;
+    }
+  }
+  th.mat-header-cell,
+  td.mat-cell,
+  td.mat-footer-cell {
+    border-bottom-style: none;
+  }
 }
-
-td {
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-th.mat-sort-header-sorted {
-  color: black;
+table.mat-table {
+  border-spacing: 2px;
 }

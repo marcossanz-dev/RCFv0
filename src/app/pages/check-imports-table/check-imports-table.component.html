@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" matSort class="ca-table">
   <ng-container
     [matColumnDef]="el.element"
     *ngFor="let el of dataHeader; let i = index; let first = first"
@@ -11,15 +11,28 @@
       (resizeEnd)="onResizeEnd($event, el.element)"
       [resizeEdges]="{ bottom: false, right: true, top: false, left: true }"
       *matHeaderCellDef
+      class="ca-table__header"
     >
-      <span [ngClass]="{ 'title-padding': !first }">{{ el.title }}</span>
+      <div class="ca-table__header-container justify-content-start">
+        <span class="ca-table__header-wrapper">
+          <span
+            class="ca-table__header-text"
+            [ngClass]="{ 'title-padding': !first }"
+            >{{ el.title }}</span
+          >
+        </span>
+      </div>
     </th>
-    <td mat-cell *matCellDef="let element">
-      <ng-container *ngIf="!el.isCheck; else checkboxTemp"
-        ><span class="w-100 span-class">{{
-          element[el.element]
-        }}</span></ng-container
+
+    <td mat-cell *matCellDef="let element" class="ca-table__cell">
+      <ng-container
+        *ngIf="!el.isCheck; else checkboxTemp"
+        class="ca-table__cell-container"
       >
+        <span class="ca-table__cell-text">
+          {{ element[el.element] }}
+        </span>
+      </ng-container>
       <ng-template #checkboxTemp>
         <input
           type="checkbox"
@@ -29,22 +42,26 @@
     </td>
   </ng-container>
 
-  <tr
-    mat-header-row
-    class="head-color"
-    *matHeaderRowDef="displayedColumns"
-  ></tr>
-  <tr
-    mat-row
-    class="mat-row"
-    matRipple
-    id="row-{{ index }}"
-    [ngClass]="{ 'odd-color': odd }"
-    *matRowDef="
-      let row;
-      let odd = odd;
-      columns: displayedColumns;
-      let index = index
-    "
-  ></tr>
+  <thead class="ca-table__thead">
+    <tr
+      mat-header-row
+      class="ca-table__row ca-table__row--bordered ca-table__row--clean"
+      *matHeaderRowDef="displayedColumns"
+    ></tr>
+  </thead>
+  <tbody class="ca-table__tbody">
+    <tr
+      mat-row
+      class="ca-table__row"
+      matRipple
+      id="row-{{ index }}"
+      [ngClass]="{ 'odd-color': odd }"
+      *matRowDef="
+        let row;
+        let odd = odd;
+        columns: displayedColumns;
+        let index = index
+      "
+    ></tr>
+  </tbody>
 </table>
