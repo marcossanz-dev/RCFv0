@@ -1,21 +1,20 @@
-.table-container {
-    display: flex;
-    flex-direction: column;
-    max-height: 500px;
-    min-width: 300px;
-}
-
-.mat-table {
-    overflow: auto;
-    max-height: 500px;
-}
-
-th,
-td {
-    padding: 10px !important;
-}
-
 .mat-row:hover {
     background-color: rgb(166, 230, 241);
     cursor: pointer;
+}
+
+table {
+    width: 100%;
+}
+
+mwlResizable {
+    box-sizing: border-box;
+}
+
+.mat-header-cell,
+.mat-cell {
+    border-left: 1px solid #eee;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    line-height: 46px !important;
 }

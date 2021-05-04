@@ -1,7 +1,10 @@
+import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild, AfterViewInit } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 import { Entity } from 'src/app/libs/entity.interface';
 import { Header } from 'src/app/libs/header.interface';
+import { ResizeEvent } from 'angular-resizable-element';
 
 const ENTITIES_DATA: Entity[] = [
   {code: 'C0031', DGRN: true, CIF: 'A28013050', name: 'CASER, CAJA DE SEGUROS Y REASEGUROS, S.A', village: 'MADRID', city:'MADRID', postalCode: '28050', country: 'ESPAÑA', fax: 0},
@@ -26,13 +29,13 @@ const HEADER_DATA: Header []=[
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent {
+export class TableComponent implements AfterViewInit {
 
   //@Input() data:any[];
   //@Input() displayedColumns: string[];
   @Output() onSelected = new EventEmitter<any>();
 
-  data: Entity[] = ENTITIES_DATA;
+  data = new MatTableDataSource(ENTITIES_DATA); 
   dataHeader: Header[] = HEADER_DATA;
   displayedColumns: string[] = this.dataHeader.map((item) => {
     return item.tag;
@@ -42,8 +45,21 @@ export class TableComponent {
   });
   selection = new SelectionModel<any>(true, []);
 
+  @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() {
-   }
+  ngAfterViewInit() {
+    this.data.sort = this.sort;
+  }
+
+  onResizeEnd(event: ResizeEvent, columnName: any): void {
+		if (event.edges.right) {
+			const cssValue = event.rectangle.width + 'px';
+			const columnElts = document.getElementsByClassName('mat-column-' + columnName);
+			for (let i = 0; i < columnElts.length; i++) {
+				const currentEl = columnElts[i] as any;
+				currentEl.style.width = cssValue;
+			}
+		}
+	}
 
 }

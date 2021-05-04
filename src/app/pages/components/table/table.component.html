@@ -1,13 +1,13 @@
-<ng-template class="table-container" #tableRCF [ngIf]="data && data.length">
-    <table mat-table class="mat-elevation-z8" [dataSource]="data">
+<ng-template class="table-container" #tableRCF [ngIf]="data">
+    <table mat-table matSort class="mat-elevation-z8" [dataSource]="data">
         <ng-container *ngFor="let key of columns" [matColumnDef]="key.tag">
             <ng-container *ngIf="key.tag !== 'DGRN'">
-                <th mat-header-cell *matHeaderCellDef>{{key.title}}</th>
+                <th mat-header-cell mat-sort-header *matHeaderCellDef mwlResizable [enableGhostResize]="true" (resizeEnd)="onResizeEnd($event, key.tag)" [resizeEdges]="{bottom: false, right: true, top: false, left: true}">{{key.title}}</th>
                 <td mat-cell *matCellDef="let element"> {{element[key.tag]}}</td>
             </ng-container>
             <!-- Checkbox Column -->
             <ng-container *ngIf="key.tag === 'DGRN'">
-                <th mat-header-cell *matHeaderCellDef>
+                <th mat-header-cell mat-sort-header *matHeaderCellDef mwlResizable [enableGhostResize]="true" (resizeEnd)="onResizeEnd($event, key.tag)" [resizeEdges]="{bottom: false, right: true, top: false, left: true}">
                     {{key.title}}
                 </th>
                 <td mat-cell *matCellDef="let element">
@@ -17,7 +17,7 @@
             </ng-container>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns; ">
+        <tr mat-row matRipple id="row-{{index}}" *matRowDef="let row; columns: displayedColumns;let index = index; ">
         </tr>
     </table>
 </ng-template>
