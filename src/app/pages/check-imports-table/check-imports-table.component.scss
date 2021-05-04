@@ -52,6 +52,7 @@
     padding: 0 16px;
     vertical-align: middle;
     max-width: 90px;
+    overflow: hidden;
     &-container {
       overflow: hidden;
       text-overflow: ellipsis;
