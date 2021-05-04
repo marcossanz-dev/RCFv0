@@ -55,7 +55,8 @@
       class="ca-table__row"
       matRipple
       id="row-{{ index }}"
-      [ngClass]="{ 'odd-color': odd }"
+      [ngClass]="{ 'odd-color': odd, selected: selection.isSelected(row) }"
+      (click)="selectTableRow(row)"
       *matRowDef="
         let row;
         let odd = odd;
