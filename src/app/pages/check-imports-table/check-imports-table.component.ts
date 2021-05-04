@@ -28,7 +28,7 @@ export class CheckImportsTableComponent implements AfterViewInit {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   selection = new SelectionModel<typeof ELEMENT_DATA>(false, []);
 
-  @Input() minWidth = 150;
+  @Input() minWidth = 100;
   @Input() maxWidth = 550;
 
   @ViewChild(MatSort)
@@ -40,7 +40,11 @@ export class CheckImportsTableComponent implements AfterViewInit {
 
   onResizeEnd(event: ResizeEvent, columnName: any): void {
     if (event.edges?.right) {
-      if (event.rectangle.width && event.rectangle.width <= this.maxWidth) {
+      if (
+        event.rectangle.width &&
+        event.rectangle.width <= this.maxWidth &&
+        event.rectangle.width >= this.minWidth
+      ) {
         this.setElementWith(event.rectangle.width, columnName);
       } else {
         return;

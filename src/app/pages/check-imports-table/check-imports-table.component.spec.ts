@@ -80,7 +80,8 @@ describe('CheckImportsTableComponent', () => {
       edges: { top: 0, bottom: 50, left: 0, right: 100 },
       rectangle: { top: 0, bottom: 50, left: 0, right: 100, width: 100 },
     } as ResizeEvent;
-    component.maxWidth = 150;
+    component.maxWidth = 160;
+    component.minWidth = 40;
     component.onResizeEnd(event, null);
     expect(spySetElementWith).toHaveBeenCalledWith(100, null);
   });
