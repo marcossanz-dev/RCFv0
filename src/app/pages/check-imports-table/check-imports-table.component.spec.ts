@@ -52,26 +52,26 @@ describe('CheckImportsTableComponent', () => {
     element[0].dispatchEvent(new Event('resizeEnd'));
     expect(spyResize).toHaveBeenCalled();
     component.onResizeEnd(event, null);
-    expect(spyResize).toReturn();
+    expect(spyResize).toBeFalsy;
     event = {
       edges: {},
       rectangle: { top: 0, bottom: 50, left: 0, right: 100 },
     };
     component.onResizeEnd(event, null);
-    expect(spyResize).toReturn();
+    expect(spyResize).toBeFalsy;
     event = {
       edges: { top: 0, bottom: 50, left: 0, right: 100 },
       rectangle: { top: 0, bottom: 50, left: 0, right: 100 },
     };
     component.onResizeEnd(event, null);
-    expect(spyResize).toReturn();
+    expect(spyResize).toBeFalsy;
     event = {
       edges: { top: 0, bottom: 50, left: 0, right: 100 },
       rectangle: { top: 0, bottom: 50, left: 0, right: 100, width: 100 },
     };
     component.maxWidth = 50;
     component.onResizeEnd(event, null);
-    expect(spyResize).toReturn();
+    expect(spyResize).toBeFalsy;
   });
 
   test('check resize inner function', () => {
@@ -107,7 +107,7 @@ describe('CheckImportsTableComponent', () => {
     ];
     component.selection.selected[0] = row;
     component.selectTableRow(row);
-    expect(spySelect).toReturn();
+    expect(spySelect).toBeFalsy;
     row = [
       {
         code: '00001',
