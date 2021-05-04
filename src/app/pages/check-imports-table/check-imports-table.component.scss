@@ -9,12 +9,16 @@ table {
   border-top: 0;
 }
 .mat-row:hover {
-  background-color: rgb(166, 230, 241);
+  background-color: rgb(153, 202, 211);
+  cursor: pointer;
+}
+.mat-row.selected {
+  background-color: rgb(169, 255, 255);
   cursor: pointer;
 }
 
 .odd-color {
-  background-color: rgb(213, 247, 239);
+  background-color: rgb(197, 197, 197);
 }
 
 .title-padding {

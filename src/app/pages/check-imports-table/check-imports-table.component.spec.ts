@@ -84,4 +84,49 @@ describe('CheckImportsTableComponent', () => {
     component.onResizeEnd(event, null);
     expect(spySetElementWith).toHaveBeenCalledWith(100, null);
   });
+
+  test('check row select function', () => {
+    const spySelect = jest.spyOn(component, 'selectTableRow');
+    let row = [
+      {
+        code: '00000',
+        perInit: '04/05/2021',
+        perEnd: '05/05/2021',
+        prevImp: '04/05/2021',
+        impDate: '06/05/2021',
+        imported: true,
+        attemps: '45',
+        extrDate: '12/05/2021',
+        movements: '2',
+        action: 'MOVE STEP MOVE STEP MOVE STEP MOVE STEP MOVE STEP MOVE STEP',
+        accepted: '3',
+        rejected: '2',
+        signedUps: '4',
+        modified: '3',
+      },
+    ];
+    component.selection.selected[0] = row;
+    component.selectTableRow(row);
+    expect(spySelect).toReturn();
+    row = [
+      {
+        code: '00001',
+        perInit: '04/05/2021',
+        perEnd: '05/05/2021',
+        prevImp: '04/05/2021',
+        impDate: '06/05/2021',
+        imported: false,
+        attemps: '46',
+        extrDate: '12/05/2021',
+        movements: '2',
+        action: 'MOVE STEP MOVE STEP MOVE STEP MOVE STEP MOVE STEP MOVE STEP',
+        accepted: '3',
+        rejected: '2',
+        signedUps: '4',
+        modified: '3',
+      },
+    ];
+    component.selectTableRow(row);
+    expect(component.selection.selected[0]).toBe(row);
+  });
 });
