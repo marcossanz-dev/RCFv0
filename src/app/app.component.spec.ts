@@ -5,6 +5,9 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSortModule } from '@angular/material/sort';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ResizableModule } from 'angular-resizable-element';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -15,8 +18,13 @@ describe('AppComponent', () => {
       ],
       imports:[
         BrowserModule,
+        BrowserAnimationsModule,
         MatTableModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatSortModule,
+        ResizableModule,
+        
+        
       ]
     }).compileComponents();
   });

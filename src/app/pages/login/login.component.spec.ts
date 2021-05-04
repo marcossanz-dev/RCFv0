@@ -1,7 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ResizableModule } from 'angular-resizable-element';
 import { AppComponent } from 'src/app/app.component';
 import { TableComponent } from '../components/table/table.component';
 
@@ -19,8 +22,12 @@ describe('LoginComponent', () => {
       ],
       imports:[
         BrowserModule,
+        BrowserAnimationsModule,
         MatTableModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatSortModule,
+        ResizableModule,
+        
       ]
     })
     .compileComponents();

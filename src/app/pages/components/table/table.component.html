@@ -17,7 +17,7 @@
             </ng-container>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>
-        <tr mat-row matRipple id="row-{{index}}" *matRowDef="let row; columns: displayedColumns;let index = index; ">
+        <tr mat-row matRipple id="row-{{index}}" *matRowDef="let row; columns: displayedColumns;let index = index;" (click)="selection.toggle(row)" [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}" (mouseover)="row.hovered = true" (mouseout)="row.hovered = false">
         </tr>
     </table>
 </ng-template>
