@@ -14,6 +14,11 @@ export class TablaComponent implements AfterViewInit {
 
   ngAfterViewInit() {
   }
+  
+  filtrar(event: Event) {
+    const filtro = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filtro.trim().toLowerCase();
+  }  
 }
 
 export interface Usuarios {
@@ -24,13 +29,13 @@ export interface Usuarios {
 }
 
 const DATOS: Usuarios[] = [
-  {usuario: 'user', nombre: 'juanito', rol: 'admin', certificado: 'si'},
-  {usuario: 'user', nombre: 'juanito', rol: 'admin', certificado: 'si'},
-  {usuario: 'user', nombre: 'juanito', rol: 'admin', certificado: 'si'},
-  {usuario: 'user', nombre: 'juanito', rol: 'admin', certificado: 'si'},
-  {usuario: 'user', nombre: 'juanito', rol: 'admin', certificado: 'si'},
-  {usuario: 'user', nombre: 'juanito', rol: 'admin', certificado: 'si'},
-  {usuario: 'user', nombre: 'juanito', rol: 'admin', certificado: 'si'},
-  {usuario: 'user', nombre: 'juanito', rol: 'admin', certificado: 'si'},
+  {usuario: 'user1', nombre: 'juanito', rol: 'admin', certificado: 'si'},
+  {usuario: 'user2', nombre: 'pedrito', rol: 'admin', certificado: 'si'},
+  {usuario: 'user3', nombre: 'rodrigo', rol: 'admin', certificado: 'si'},
+  {usuario: 'user4', nombre: 'marquitos', rol: 'admin', certificado: 'si'},
+  {usuario: 'user5', nombre: 'pepito', rol: 'admin', certificado: 'si'},
+  {usuario: 'user6', nombre: 'juanito', rol: 'admin', certificado: 'si'},
+  {usuario: 'user7', nombre: 'juanito', rol: 'admin', certificado: 'si'},
+  {usuario: 'user8', nombre: 'juanito', rol: 'admin', certificado: 'si'},
 
 ];
