@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
 	ResizableModule
 } from 'angular-resizable-element';
+import { HomeComponent } from './pages/home/home.component';
 
 
 
@@ -21,6 +22,7 @@ import {
     AppComponent,
     LoginComponent,
     TableComponent,
+    HomeComponent,
     
 
   ],

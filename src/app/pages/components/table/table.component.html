@@ -1,8 +1,8 @@
-<ng-template class="table-container" #tableRCF [ngIf]="data">
-    <table mat-table matSort class="mat-elevation-z8" [dataSource]="data">
+<ng-template class="table-container" #tableRCF [ngIf]="entities">
+    <table mat-table matSort class="mat-elevation-z8" [dataSource]="entities" matSortDirection="asc" (matSortChange)="sortData($event)">
         <ng-container *ngFor="let key of columns" [matColumnDef]="key.tag">
             <ng-container *ngIf="key.tag !== 'DGRN'">
-                <th mat-header-cell mat-sort-header *matHeaderCellDef mwlResizable [enableGhostResize]="true" (resizeEnd)="onResizeEnd($event, key.tag)" [resizeEdges]="{bottom: false, right: true, top: false, left: true}">{{key.title}}</th>
+                <th mat-header-cell mat-sort-header="{{key.tag}}" *matHeaderCellDef mwlResizable [enableGhostResize]="true" (resizeEnd)="onResizeEnd($event, key.tag)" [resizeEdges]="{bottom: false, right: true, top: false, left: true}">{{key.title}}</th>
                 <td mat-cell *matCellDef="let element"> {{element[key.tag]}}</td>
             </ng-container>
             <!-- Checkbox Column -->
