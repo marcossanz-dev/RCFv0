@@ -1,16 +1,9 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import {
-  AfterContentChecked,
-  AfterViewInit,
-  Component,
-  Input,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ResizeEvent } from 'angular-resizable-element';
 import { DATA_HEADER, ELEMENT_DATA } from './models/check-imports-table.enums';
-import { CheckImportsElement } from './models/check-imports-table.interface';
 
 @Component({
   selector: 'app-check-imports-table',
@@ -18,17 +11,18 @@ import { CheckImportsElement } from './models/check-imports-table.interface';
   styleUrls: ['./check-imports-table.component.scss'],
 })
 export class CheckImportsTableComponent implements AfterViewInit {
-  dataHeader = DATA_HEADER;
+  @Input() dataHeader = DATA_HEADER;
   displayedColumns: string[] = this.dataHeader.map((item) => {
     return item.element;
   });
   columns = this.dataHeader.map((item, index) => {
     return { field: item.element, width: 150, index: index };
   });
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  selection = new SelectionModel<typeof ELEMENT_DATA>(false, []);
+  @Input() isMultiple = false;
+  @Input() dataSource = new MatTableDataSource(ELEMENT_DATA);
+  selection = new SelectionModel<typeof ELEMENT_DATA>(this.isMultiple, []);
 
-  @Input() minWidth = 150;
+  @Input() minWidth = 100;
   @Input() maxWidth = 550;
 
   @ViewChild(MatSort)
@@ -40,7 +34,11 @@ export class CheckImportsTableComponent implements AfterViewInit {
 
   onResizeEnd(event: ResizeEvent, columnName: any): void {
     if (event.edges?.right) {
-      if (event.rectangle.width && event.rectangle.width <= this.maxWidth) {
+      if (
+        event.rectangle.width &&
+        event.rectangle.width <= this.maxWidth &&
+        event.rectangle.width >= this.minWidth
+      ) {
         this.setElementWith(event.rectangle.width, columnName);
       } else {
         return;
@@ -64,10 +62,6 @@ export class CheckImportsTableComponent implements AfterViewInit {
   }
 
   selectTableRow(row: any) {
-    if (row !== this.selection.selected[0]) {
-      this.selection.toggle(row);
-    } else {
-      return;
-    }
+    this.selection.toggle(row);
   }
 }
