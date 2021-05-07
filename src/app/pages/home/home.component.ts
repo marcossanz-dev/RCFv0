@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
   ];
 
   displayedColumns: any;
+  dataClone: any = this.data;
 
 
   constructor() { }
@@ -38,6 +39,21 @@ export class HomeComponent implements OnInit {
     this.displayedColumns = this.dataHeader.map((item) => {
       return item.tag;
     });
+
+  }
+
+  onSearch(input: any): void{
+    const value = input.target.value;
+    console.log(value);
+    let dataFiltered;
+    if (value) {
+      dataFiltered = this.dataClone.filter(((item: { value: string; }) => item.value.toLowerCase().includes(value.toLowerCase()));
+    } else {
+      dataFiltered = this.dataClone;
+    }
+    this.data = dataFiltered;
+    console.log(this.data);
+
   }
 
 }

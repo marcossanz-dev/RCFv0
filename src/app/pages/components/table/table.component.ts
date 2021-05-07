@@ -32,10 +32,10 @@ export class TableComponent implements OnInit {
  */
 
   constructor() {
-    this.sortedData = this.entities.slice();
   }
 
   ngOnInit(): void {
+    this.sortedData = this.entities.slice();
     this.columns = this.dataHeader.map((item) => {
       return { tag: item.tag, title: item.title }
     });
@@ -55,9 +55,12 @@ export class TableComponent implements OnInit {
 
   sortData(sort: Sort) {
     const data = this.entities.slice();
+    console.log(data);
+    console.log(sort.direction);
     if (!sort.active || sort.direction === '') {
       this.entities = data;
-      console.log(this.sortedData);
+      console.log('aqui');
+      console.log(this.entities);
       return;
     }
 
