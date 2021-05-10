@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Entity } from 'src/app/libs/entity.interface';
 import { Header } from 'src/app/libs/header.interface';
 
@@ -29,7 +30,16 @@ export class HomeComponent implements OnInit {
     { tag: 'email', title: 'CORREO ELECTRONICO', isChecked: false }
   ];
 
+  notificationType = [
+    'Si',
+    'No',
+    'Todos'
+  ];
+
   displayedColumns: any;
+  searchKey: string;
+  dataSource : any;
+  selectedOption: string = 'Todos';
 
 
   constructor() { }
@@ -38,6 +48,19 @@ export class HomeComponent implements OnInit {
     this.displayedColumns = this.dataHeader.map((item) => {
       return item.tag;
     });
+    this.dataSource = new MatTableDataSource(this.data);
+
   }
+
+  applyFilter(){
+    this.dataSource.filter = this.searchKey.trim().toLowerCase();
+  }
+
+  cleanFilter(){
+    this.searchKey="";
+    this.selectedOption="Todos";
+    this.applyFilter();
+  }
+
 
 }

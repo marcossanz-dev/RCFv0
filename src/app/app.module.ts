@@ -13,6 +13,13 @@ import {
 	ResizableModule
 } from 'angular-resizable-element';
 import { HomeComponent } from './pages/home/home.component';
+import { FilterComponent } from './pages/components/filter/filter.component';
+import { FormsModule } from '@angular/forms';
+
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 
@@ -23,6 +30,7 @@ import { HomeComponent } from './pages/home/home.component';
     LoginComponent,
     TableComponent,
     HomeComponent,
+    FilterComponent
     
 
   ],
@@ -33,6 +41,11 @@ import { HomeComponent } from './pages/home/home.component';
     MatCheckboxModule,
     MatSortModule,
     ResizableModule,
+    FormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatFormFieldModule
     
   ],
   providers: [],

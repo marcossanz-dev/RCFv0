@@ -13,9 +13,9 @@ import { ResizeEvent } from 'angular-resizable-element';
 })
 export class TableComponent implements OnInit {
 
-  @Input() entities: any[] = [];
-  @Input() dataHeader: Header[] = [];
-  @Input() displayedColumns: string[] = [];
+  @Input() entities: any;
+  @Input() dataHeader: Header[];
+  @Input() displayedColumns: string[];
 
   @Output() onSelected = new EventEmitter<any>();
 
@@ -32,7 +32,6 @@ export class TableComponent implements OnInit {
  */
 
   constructor() {
-    this.sortedData = this.entities.slice();
   }
 
   ngOnInit(): void {
@@ -54,14 +53,13 @@ export class TableComponent implements OnInit {
   }
 
   sortData(sort: Sort) {
-    const data = this.entities.slice();
+    const data = this.entities.data.slice();
     if (!sort.active || sort.direction === '') {
-      this.entities = data;
-      console.log(this.sortedData);
+      this.entities.data = data;
       return;
     }
 
-    this.entities = data.sort((a, b) => {
+    this.entities.data = data.sort((a, b) => {
       console.log(a[sort.active]);
       console.log(b[sort.active]);
       const aux = a[sort.active];

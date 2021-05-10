@@ -1,1 +1,18 @@
-<app-table [entities]="data" [displayedColumns]="displayedColumns" [dataHeader]="dataHeader"></app-table>
+<app-filter>
+    <div class="search-form-field">
+        <span>Codigo: </span>
+        <mat-form-field class="search-form-field-content">
+            <mat-label></mat-label>
+            <input matInput [(ngModel)]="searchKey" placeholder="">
+        </mat-form-field>
+        <mat-radio-group name="filter" [(ngModel)]="selectedOption">
+            <mat-radio-button *ngFor="let op of notificationType" name="filter" [value]="op"  style="margin: 10px">
+              {{op}}
+            </mat-radio-button>
+        </mat-radio-group>
+        <button mat-raised-button color="accent" (click)="applyFilter()">Buscar</button>
+        <button mat-raised-button color="primary" (click)="cleanFilter()">Limpiar</button>
+
+    </div>
+ </app-filter>
+<app-table [entities]="dataSource" [displayedColumns]="displayedColumns" [dataHeader]="dataHeader"></app-table>
