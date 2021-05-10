@@ -103,15 +103,16 @@
         <span class="item-label">{{ item.name }}</span>
         <div class="d-block my-3">
           <div
-            *ngFor="let option of item.options"
+            *ngFor="let option of item.options; let i = index"
             class="custom-control custom-radio"
           >
             <input
               attr.id="{{ option.label }}-{{ item.formControl }}"
               type="radio"
               class="custom-control-input"
-              attr.value="{{ option.label }}"
+              [value]="option.label"
               attr.name="{{ item.name }}"
+              [checked]="i === 2"
               attr.formControlName="{{ item.formControl }}"
             />
           </div>

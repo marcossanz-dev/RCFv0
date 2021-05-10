@@ -76,20 +76,18 @@ export class CheckImportsTableComponent implements AfterViewInit {
     },
   ];
 
-  form: FormGroup;
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      company: ['', null],
-      sendType: ['', null],
-      comp: ['Todos', null],
-      gen: ['Todos', null],
-      send: ['Todos', null],
-      val: ['Todos', null],
-      sing: ['Todos', null],
-      proc: ['Todos', null],
-      sendMan: ['Todos', null],
-    });
-  }
+  form: FormGroup = this.fb.group({
+    company: [''],
+    sendType: [''],
+    comp: ['Todos'],
+    gen: ['Todos'],
+    send: ['Todos'],
+    val: ['Todos'],
+    sing: ['Todos'],
+    proc: ['Todos'],
+    sendMan: ['Todos'],
+  });
+  constructor(private fb: FormBuilder) {}
 
   //
 
@@ -102,6 +100,7 @@ export class CheckImportsTableComponent implements AfterViewInit {
       onlySelf: true,
     });
     this.checkboxObject.forEach((item) => {
+      this.form.controls[item.formControl].markAllAsTouched();
       this.form.controls[item.formControl].setValue('Todos', {
         onlySelf: true,
       });
