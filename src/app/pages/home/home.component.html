@@ -1,2 +1,10 @@
-<app-filter [label]="'Filter'" (keyup)="onSearch($event)"></app-filter>
-<app-table [entities]="data" [displayedColumns]="displayedColumns" [dataHeader]="dataHeader"></app-table>
+<app-filter>
+   <div class="search-form-field">
+   <span>Search: </span>
+   <mat-form-field class="search-form-field-content">
+         <mat-label></mat-label>
+         <input matInput [(ngModel)]="searchKey" placeholder="Enter text" (keyup)="applyFilter()">
+   </mat-form-field>
+</div>
+</app-filter>
+<app-table [entities]="dataSource" [displayedColumns]="displayedColumns" [dataHeader]="dataHeader"></app-table>

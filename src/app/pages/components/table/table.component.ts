@@ -13,15 +13,16 @@ import { ResizeEvent } from 'angular-resizable-element';
 })
 export class TableComponent implements OnInit {
 
-  @Input() entities: any[] = [];
-  @Input() dataHeader: Header[] = [];
-  @Input() displayedColumns: string[] = [];
+  @Input() entities: any;
+  @Input() dataHeader: Header[];
+  @Input() displayedColumns: string[];
 
-  @Output() onSelected = new EventEmitter<any>();
+  @ViewChild(MatSort) sort: MatSort;
+
 
   columns: any;
   public selection = new SelectionModel<Entity>(false, []);
-  sortedData: Entity[] = [];
+  sortedData: MatTableDataSource<any>;
 
 
   /*
@@ -35,7 +36,8 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sortedData = this.entities.slice();
+    this.sortedData = new MatTableDataSource(this.entities);
+    this.sortedData.sort = this.sort;
     this.columns = this.dataHeader.map((item) => {
       return { tag: item.tag, title: item.title }
     });
@@ -53,30 +55,7 @@ export class TableComponent implements OnInit {
     }
   }
 
-  sortData(sort: Sort) {
-    const data = this.entities.slice();
-    console.log(data);
-    console.log(sort.direction);
-    if (!sort.active || sort.direction === '') {
-      this.entities = data;
-      console.log('aqui');
-      console.log(this.entities);
-      return;
-    }
 
-    this.entities = data.sort((a, b) => {
-      console.log(a[sort.active]);
-      console.log(b[sort.active]);
-      const aux = a[sort.active];
-      const isAsc = sort.direction === 'asc';
-      return this.compare(a[sort.active],b[sort.active],isAsc)
-      
-    });
-  }
-
-  compare(a: number | string, b: number | string, isAsc: boolean) {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-  }
 
 
 }

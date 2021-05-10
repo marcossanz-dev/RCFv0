@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Entity } from 'src/app/libs/entity.interface';
 import { Header } from 'src/app/libs/header.interface';
 
@@ -31,6 +32,9 @@ export class HomeComponent implements OnInit {
 
   displayedColumns: any;
   dataClone: any = this.data;
+  dataSource: any;
+ 
+  searchKey: string
 
 
   constructor() { }
@@ -39,6 +43,7 @@ export class HomeComponent implements OnInit {
     this.displayedColumns = this.dataHeader.map((item) => {
       return item.tag;
     });
+    this.dataSource = new MatTableDataSource(this.data);
 
   }
 
@@ -47,12 +52,17 @@ export class HomeComponent implements OnInit {
     console.log(value);
     let dataFiltered;
     if (value) {
-      dataFiltered = this.dataClone.filter(((item: { value: string; }) => item.value.toLowerCase().includes(value.toLowerCase()));
+      dataFiltered = this.dataClone.filter(((item: { value: string; }) => item.value.toLowerCase().includes(value.toLowerCase())));
     } else {
       dataFiltered = this.dataClone;
     }
     this.data = dataFiltered;
     console.log(this.data);
+
+  }
+
+  applyFilter(){
+    this.dataSource.filter = this.searchKey.trim().toLowerCase();
 
   }
 

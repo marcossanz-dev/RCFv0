@@ -1,4 +1,3 @@
-<mat-form-field class="example-form-field">
-    <mat-label>{{ label }}</mat-label>
-    <input matInput type="text" [(ngModel)]="value" (change)="onChange($event)">
- </mat-form-field>
+<div class="filter-container">
+    <ng-content select=".search-form-field"></ng-content>
+</div>

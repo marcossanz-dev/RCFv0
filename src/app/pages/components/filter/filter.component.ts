@@ -7,21 +7,14 @@ import { Entity } from 'src/app/libs/entity.interface';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss']
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent{
 
-  @Input() label!: string;
-  value!: string;
   constructor() { }
 
-  dataSource: any;
-
-  ngOnInit(): void {
-
-  }
-
+  /*
   onChange(el: any) {
     this.value = el.target.value;
     console.log(this.value);
-  }
+  }*/
 
 }
