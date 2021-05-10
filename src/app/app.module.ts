@@ -14,12 +14,22 @@ import {
   NoopAnimationsModule,
 } from '@angular/platform-browser/animations';
 
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+
 import { CheckImportsTableComponent } from './pages/check-imports-table/check-imports-table.component';
 
 import { ResizableModule } from 'angular-resizable-element';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FilterComponent } from './components/filter/filter.component';
+import {
+  MatFormField,
+  MatFormFieldControl,
+  MatFormFieldModule,
+} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -28,6 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CheckImportsTableComponent,
     MenuComponent,
     SimpleTableComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,12 +46,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatSortModule,
     MatTableModule,
+    MatFormFieldModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
     ResizableModule,
     MatMenuModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

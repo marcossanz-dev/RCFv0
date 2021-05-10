@@ -1,0 +1,20 @@
+<div class="main">
+  <div class="main-title"><span>Filtro de búsqueda</span></div>
+  <div class="main-filter">
+    <ng-content class="main-filter__form" select="[form]"></ng-content>
+    <div class="main-filter__buttons">
+      <button
+        (click)="emitter.emit('search')"
+        class="main-filter__buttons-search"
+      >
+        Buscar
+      </button>
+      <button
+        (click)="emitter.emit('clean')"
+        class="main-filter__buttons-clean"
+      >
+        Limpiar
+      </button>
+    </div>
+  </div>
+</div>
