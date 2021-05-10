@@ -42,50 +42,78 @@ export class CheckImportsTableComponent implements AfterViewInit {
     {
       name: 'Compuesto',
       formControl: 'comp',
-      options: [{ label: 'Si' }, { label: 'No' }, { label: 'Todos' }],
+      options: [
+        { label: 'Si', value: 0 },
+        { label: 'No', value: 1 },
+        { label: 'Todos', value: 2 },
+      ],
     },
     {
       name: 'Generado',
       formControl: 'gen',
-      options: [{ label: 'Si' }, { label: 'No' }, { label: 'Todos' }],
+      options: [
+        { label: 'Si', value: 0 },
+        { label: 'No', value: 1 },
+        { label: 'Todos', value: 2 },
+      ],
     },
     {
       name: 'Enviado',
       formControl: 'send',
-      options: [{ label: 'Si' }, { label: 'No' }, { label: 'Todos' }],
+      options: [
+        { label: 'Si', value: 0 },
+        { label: 'No', value: 1 },
+        { label: 'Todos', value: 2 },
+      ],
     },
     {
       name: 'Validado',
       formControl: 'val',
-      options: [{ label: 'Si' }, { label: 'No' }, { label: 'Todos' }],
+      options: [
+        { label: 'Si', value: 0 },
+        { label: 'No', value: 1 },
+        { label: 'Todos', value: 2 },
+      ],
     },
     {
       name: 'Firmado',
       formControl: 'sing',
-      options: [{ label: 'Si' }, { label: 'No' }, { label: 'Todos' }],
+      options: [
+        { label: 'Si', value: 0 },
+        { label: 'No', value: 1 },
+        { label: 'Todos', value: 2 },
+      ],
     },
     {
       name: 'Procesado',
       formControl: 'proc',
-      options: [{ label: 'Si' }, { label: 'No' }, { label: 'Todos' }],
+      options: [
+        { label: 'Si', value: 0 },
+        { label: 'No', value: 1 },
+        { label: 'Todos', value: 2 },
+      ],
     },
     {
       name: 'Envio Manual',
       formControl: 'sendMan',
-      options: [{ label: 'Si' }, { label: 'No' }, { label: 'Todos' }],
+      options: [
+        { label: 'Si', value: 0 },
+        { label: 'No', value: 1 },
+        { label: 'Todos', value: 2 },
+      ],
     },
   ];
 
   form: FormGroup = this.fb.group({
     company: [''],
     sendType: [''],
-    comp: ['Todos'],
-    gen: ['Todos'],
-    send: ['Todos'],
-    val: ['Todos'],
-    sing: ['Todos'],
-    proc: ['Todos'],
-    sendMan: ['Todos'],
+    comp: [2],
+    gen: [2],
+    send: [2],
+    val: [2],
+    sing: [2],
+    proc: [2],
+    sendMan: [2],
   });
   constructor(private fb: FormBuilder) {}
 
@@ -101,7 +129,7 @@ export class CheckImportsTableComponent implements AfterViewInit {
     });
     this.checkboxObject.forEach((item) => {
       this.form.controls[item.formControl].markAllAsTouched();
-      this.form.controls[item.formControl].setValue('Todos', {
+      this.form.controls[item.formControl].setValue(2, {
         onlySelf: true,
       });
     });
