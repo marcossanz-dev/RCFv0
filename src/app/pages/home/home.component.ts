@@ -11,7 +11,7 @@ import { Header } from 'src/app/libs/header.interface';
 })
 export class HomeComponent implements OnInit {
 
-   data: Entity[] = [
+  data: Entity[] = [
     { code: 'C0031', DGRN: true, CIF: 'A28013050', name: 'CASER, CAJA DE SEGUROS Y REASEGUROS, S.A', village: 'MADRID', city: 'MADRID', postalCode: '28050', country: 'ESPAÑA', fax: 0 },
     { code: 'C0074', DGRN: false, CIF: 'G08169831', name: 'CAIXA MANRESA', village: 'MANRESA', city: 'BARCELONA', postalCode: '0804', country: 'ESPAÑA', fax: 0 },
     { code: 'C0739', DGRN: false, CIF: 'A82070442', name: 'CAJA ESPAÑA VIDA', village: 'LEON', city: 'LEON', postalCode: '24005', country: 'ESPAÑA', fax: 0 }
@@ -38,8 +38,9 @@ export class HomeComponent implements OnInit {
 
   displayedColumns: any;
   searchKey: string;
-  dataSource : any;
+  dataSource: any;
   selectedOption: string = 'Todos';
+  notification: boolean;
 
 
   constructor() { }
@@ -52,14 +53,29 @@ export class HomeComponent implements OnInit {
 
   }
 
-  cleanFilter(){
-    this.searchKey='';
-    this.selectedOption='Todos';
+  cleanFilter() {
+    this.searchKey = '';
+    this.selectedOption = 'Todos';
+    this.dataSource = new MatTableDataSource(this.data);
     this.applyFilter();
   }
 
-  applyFilter(){
+  applyFilter() {
+    if (this.selectedOption != 'Todos') {
+      this.applyNotificationFilter();
+
+    }
     this.dataSource.filter = this.searchKey.trim().toLowerCase();
+  }
+
+  applyNotificationFilter() {
+    if (this.selectedOption === 'Si') {
+      this.notification = true;
+    } else { this.notification = false; }
+
+    this.dataSource.data = this.dataSource.data.filter(data =>
+      data.DGRN === this.notification
+    );
   }
 
 }

@@ -13,7 +13,7 @@ import { ResizeEvent } from 'angular-resizable-element';
 })
 export class TableComponent implements OnInit {
 
-  @Input() entities: any;
+  @Input() dataTable: any;
   @Input() dataHeader: Header[];
   @Input() displayedColumns: string[];
 
@@ -37,8 +37,6 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sortedData = new MatTableDataSource(this.entities);
-    this.sortedData.sort = this.sort;
     this.columns = this.dataHeader.map((item) => {
       return { tag: item.tag, title: item.title }
     });
@@ -57,13 +55,14 @@ export class TableComponent implements OnInit {
   }
 
   sortData(sort: Sort) {
-    const data = this.entities.data.slice();
+    const data = this.dataTable.data.slice();
+    console.log(this.dataTable.data);
     if (!sort.active || sort.direction === '') {
-      this.entities.data = data;
+      this.dataTable.data = data;
       return;
     }
 
-    this.entities.data = data.sort((a, b) => {
+    this.dataTable.data = data.sort((a, b) => {
       console.log(a[sort.active]);
       console.log(b[sort.active]);
       const aux = a[sort.active];

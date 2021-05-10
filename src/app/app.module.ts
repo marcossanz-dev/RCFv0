@@ -20,6 +20,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+
 
 
 
@@ -45,7 +47,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatInputModule,
     MatButtonModule,
     MatRadioModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatIconModule
     
   ],
   providers: [],
