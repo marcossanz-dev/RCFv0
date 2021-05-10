@@ -28,6 +28,7 @@
       <ng-container
         *ngIf="!el.isCheck; else checkboxTemp"
         class="ca-table__cell-container"
+        -
       >
         <span class="ca-table__cell-text">
           {{ element[el.element] }}
@@ -66,3 +67,55 @@
     ></tr>
   </tbody>
 </table>
+
+<!--FILTROOOOO-->
+<app-filter
+  ><form [formGroup]="form" form>
+    <div class="form__selects">
+      <label matLabel>Compañia:</label>
+      <select [formControlName]="'company'">
+        <option [ngValue]="item.name" *ngFor="let item of companyOptions">
+          {{ item.name }}
+        </option>
+      </select>
+      <label matLabel>Tipo de envío:</label>
+      <select [formControlName]="'sendType'">
+        <option [ngValue]="item.name" *ngFor="let item of sendTypeOptions">
+          {{ item.name }}
+        </option>
+      </select>
+    </div>
+    <div class="form__radio">
+      <div class="group-gap">
+        <div class="d-block my-3 label-margin">
+          <div
+            *ngFor="let option of checkboxObject[0].options"
+            class="custom-control custom-radio"
+          >
+            <label class="custom-control-label-radio">{{ option.label }}</label>
+          </div>
+        </div>
+      </div>
+      <div
+        *ngFor="let item of checkboxObject; let first = first"
+        class="group-gap"
+      >
+        <span class="item-label">{{ item.name }}</span>
+        <div class="d-block my-3">
+          <div
+            *ngFor="let option of item.options"
+            class="custom-control custom-radio"
+          >
+            <input
+              attr.id="{{ option.label }}-{{ item.formControl }}"
+              type="radio"
+              class="custom-control-input"
+              attr.value="{{ option.label }}"
+              attr.name="{{ item.name }}"
+              attr.formControlName="{{ item.formControl }}"
+            />
+          </div>
+        </div>
+      </div>
+    </div></form
+></app-filter>

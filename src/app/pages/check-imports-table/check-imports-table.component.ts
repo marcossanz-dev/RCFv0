@@ -1,5 +1,6 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ResizeEvent } from 'angular-resizable-element';
@@ -27,8 +28,86 @@ export class CheckImportsTableComponent implements AfterViewInit {
 
   @ViewChild(MatSort)
   sort!: MatSort;
+  //FILTER PART (NOT HERE ONLY FOR CODE)
+  companyOptions = [{ name: 'Todos -' }];
+  sendTypeOptions = [
+    { name: 'Todos' },
+    { name: 'Nueva producción' },
+    { name: 'Cartera resto seguros' },
+    { name: 'Nueva producción - tarjeta de crédito' },
+    { name: 'Periódico' },
+  ];
+
+  checkboxObject = [
+    {
+      name: 'Compuesto',
+      formControl: 'comp',
+      options: [{ label: 'Si' }, { label: 'No' }, { label: 'Todos' }],
+    },
+    {
+      name: 'Generado',
+      formControl: 'gen',
+      options: [{ label: 'Si' }, { label: 'No' }, { label: 'Todos' }],
+    },
+    {
+      name: 'Enviado',
+      formControl: 'send',
+      options: [{ label: 'Si' }, { label: 'No' }, { label: 'Todos' }],
+    },
+    {
+      name: 'Validado',
+      formControl: 'val',
+      options: [{ label: 'Si' }, { label: 'No' }, { label: 'Todos' }],
+    },
+    {
+      name: 'Firmado',
+      formControl: 'sing',
+      options: [{ label: 'Si' }, { label: 'No' }, { label: 'Todos' }],
+    },
+    {
+      name: 'Procesado',
+      formControl: 'proc',
+      options: [{ label: 'Si' }, { label: 'No' }, { label: 'Todos' }],
+    },
+    {
+      name: 'Envio Manual',
+      formControl: 'sendMan',
+      options: [{ label: 'Si' }, { label: 'No' }, { label: 'Todos' }],
+    },
+  ];
+
+  form: FormGroup;
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      company: ['', null],
+      sendType: ['', null],
+      comp: ['Todos', null],
+      gen: ['Todos', null],
+      send: ['Todos', null],
+      val: ['Todos', null],
+      sing: ['Todos', null],
+      proc: ['Todos', null],
+      sendMan: ['Todos', null],
+    });
+  }
+
+  //
 
   ngAfterViewInit() {
+    //FILTROOOO
+    this.form.controls['company'].setValue(this.companyOptions[0].name, {
+      onlySelf: true,
+    });
+    this.form.controls['sendType'].setValue(this.sendTypeOptions[0].name, {
+      onlySelf: true,
+    });
+    this.checkboxObject.forEach((item) => {
+      this.form.controls[item.formControl].setValue('Todos', {
+        onlySelf: true,
+      });
+    });
+
+    //
     this.dataSource.sort = this.sort;
   }
 

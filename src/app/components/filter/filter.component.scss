@@ -17,19 +17,25 @@
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     display: flex;
-    padding-left: 1rem;
     justify-content: center;
     flex-direction: column;
     background-color: rgb(133, 190, 171);
+    span {
+      padding-left: 0.6563rem;
+    }
   }
   .main-filter {
     display: flex;
     justify-content: space-between;
-    padding-left: 1rem;
     width: 100%;
+
     .main-filter__buttons {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      padding: 0.5rem;
+      button {
+        margin-top: 0.5rem;
+      }
     }
   }
 }
