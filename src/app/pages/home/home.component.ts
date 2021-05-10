@@ -52,15 +52,14 @@ export class HomeComponent implements OnInit {
 
   }
 
-  applyFilter(){
-    this.dataSource.filter = this.searchKey.trim().toLowerCase();
-  }
-
   cleanFilter(){
-    this.searchKey="";
-    this.selectedOption="Todos";
+    this.searchKey='';
+    this.selectedOption='Todos';
     this.applyFilter();
   }
 
+  applyFilter(){
+    this.dataSource.filter = this.searchKey.trim().toLowerCase();
+  }
 
 }

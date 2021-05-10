@@ -17,11 +17,13 @@ export class TableComponent implements OnInit {
   @Input() dataHeader: Header[];
   @Input() displayedColumns: string[];
 
-  @Output() onSelected = new EventEmitter<any>();
 
   columns: any;
   public selection = new SelectionModel<Entity>(false, []);
-  sortedData: Entity[] = [];
+  sortedData: MatTableDataSource<any>;
+
+  @ViewChild(MatSort) sort: MatSort = new MatSort;
+
 
 
   /*
@@ -35,6 +37,8 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sortedData = new MatTableDataSource(this.entities);
+    this.sortedData.sort = this.sort;
     this.columns = this.dataHeader.map((item) => {
       return { tag: item.tag, title: item.title }
     });
@@ -72,6 +76,7 @@ export class TableComponent implements OnInit {
   compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
+
 
 
 }
