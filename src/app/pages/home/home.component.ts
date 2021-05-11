@@ -12,7 +12,7 @@ import { Header } from 'src/app/libs/header.interface';
 export class HomeComponent implements OnInit {
 
   data: Entity[] = [
-    { code: 'C0031', DGRN: true, CIF: 'A28013050', name: 'CASER, CAJA DE SEGUROS Y REASEGUROS, S.A', village: 'MADRID', city: 'MADRID', postalCode: '28050', country: 'ESPAÑA', fax: 0 },
+    { code: 'C0031', DGRN: true, CIF: 'A28013050', name: 'CASER, CAJA DE SEGUROS Y REASEGUROS, S.A', village: 'MADRID', city: 'MADRID', postalCode: '28050', country: 'ESPAÑA', fax: 0 ,email: 'caserEspaña@gmail.com'},
     { code: 'C0074', DGRN: false, CIF: 'G08169831', name: 'CAIXA MANRESA', village: 'MANRESA', city: 'BARCELONA', postalCode: '0804', country: 'ESPAÑA', fax: 0 },
     { code: 'C0739', DGRN: false, CIF: 'A82070442', name: 'CAJA ESPAÑA VIDA', village: 'LEON', city: 'LEON', postalCode: '24005', country: 'ESPAÑA', fax: 0 }
   ];

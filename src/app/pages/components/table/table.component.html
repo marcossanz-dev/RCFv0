@@ -11,7 +11,7 @@
                     {{key.title}}
                 </th>
                 <td mat-cell *matCellDef="let element">
-                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ?  selection.toggle(element) : null" [checked]="element.DGRN">
+                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ?  selection.toggle(element) : null" [checked]="element.DGRN" disabled>
                     </mat-checkbox>
                 </td>
             </ng-container>
