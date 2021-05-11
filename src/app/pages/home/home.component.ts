@@ -50,6 +50,9 @@ export class HomeComponent implements OnInit {
       return item.tag;
     });
     this.dataSource = new MatTableDataSource(this.data);
+    this.dataSource.filterPredicate = (data: Entity, filter: string) => {
+      return data.code == filter;
+     };
 
   }
 
@@ -65,7 +68,7 @@ export class HomeComponent implements OnInit {
       this.applyNotificationFilter();
 
     }
-    this.dataSource.filter = this.searchKey.trim().toLowerCase();
+    this.dataSource.filter = this.searchKey;
   }
 
   applyNotificationFilter() {
