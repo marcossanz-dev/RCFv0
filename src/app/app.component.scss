@@ -1,4 +1,18 @@
-.content{
-    width: 100%;
-    display: table-cell;
+.main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
+.contenedor{
+    flex: 1;
+    justify-content: center;
+    background-size: cover;
+    position: inherit;
+    display: flex;
+    margin: 0;
+}
+.contenedor img {
+    width: 100%;
+    
+}
+

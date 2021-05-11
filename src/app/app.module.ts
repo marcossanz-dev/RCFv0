@@ -6,12 +6,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { TablaComponent } from './pages/tabla/tabla.component';
+import { CabeceraComponent } from './pages/cabecera/cabecera.component';
+import { FooterComponent } from './pages/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TablaComponent,
+    CabeceraComponent,
+    FooterComponent,
 
   ],
   imports: [
