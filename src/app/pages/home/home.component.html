@@ -10,8 +10,10 @@
               {{op}}
             </mat-radio-button>
         </mat-radio-group>
-        <button mat-raised-button color="accent" (click)="applyFilter()">Buscar</button>
-        <button mat-raised-button color="primary" (click)="cleanFilter()">Limpiar</button>
+        <button mat-raised-button color="accent" (click)="applyFilter()"><mat-icon aria-hidden="false">search</mat-icon><span> Buscar</span></button>
+        <button mat-raised-button color="primary" (click)="cleanFilter()"><mat-icon aria-hidden="false">delete_sweep</mat-icon><span> Limpiar</span></button>
+        
+
 
     </div>
  </app-filter>
