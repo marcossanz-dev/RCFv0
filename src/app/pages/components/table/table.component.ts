@@ -1,6 +1,6 @@
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, EventEmitter, OnInit, Output, ViewChild, AfterViewInit, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild, AfterViewInit, Input, AfterViewChecked } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { Entity } from 'src/app/libs/entity.interface';
 import { Header } from 'src/app/libs/header.interface';
@@ -11,7 +11,7 @@ import { ResizeEvent } from 'angular-resizable-element';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, AfterViewChecked {
 
   @Input() dataTable: any;
   @Input() dataHeader: Header[];
@@ -20,27 +20,25 @@ export class TableComponent implements OnInit {
 
   columns: any;
   public selection = new SelectionModel<Entity>(false, []);
-  sortedData: MatTableDataSource<any>;
 
-  @ViewChild(MatSort) sort: MatSort = new MatSort;
-
-
-
-  /*
-  data = new MatTableDataSource(ENTITIES_DATA);
-  dataHeader: Header[] = HEADER_DATA;
-  displayedColumns: string[];
-  @ViewChild(MatSort) sort: MatSort = new MatSort;
- */
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor() {
   }
+ 
+
 
   ngOnInit(): void {
     this.columns = this.dataHeader.map((item) => {
       return { tag: item.tag, title: item.title }
     });
   }
+
+  ngAfterViewChecked(): void {
+    this.dataTable.sort = this.sort;
+  }
+
+
 
 
   onResizeEnd(event: ResizeEvent, columnName: any): void {
@@ -53,30 +51,6 @@ export class TableComponent implements OnInit {
       }
     }
   }
-
-  sortData(sort: Sort) {
-    const data = this.dataTable.data.slice();
-    console.log(this.dataTable.data);
-    if (!sort.active || sort.direction === '') {
-      this.dataTable.data = data;
-      return;
-    }
-
-    this.dataTable.data = data.sort((a, b) => {
-      console.log(a[sort.active]);
-      console.log(b[sort.active]);
-      const aux = a[sort.active];
-      const isAsc = sort.direction === 'asc';
-      return this.compare(a[sort.active],b[sort.active],isAsc)
-      
-    });
-  }
-
-  compare(a: number | string, b: number | string, isAsc: boolean) {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-  }
-
-
 
 }
 
