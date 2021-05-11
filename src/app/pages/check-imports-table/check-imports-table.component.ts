@@ -114,6 +114,10 @@ export class CheckImportsTableComponent implements AfterViewInit {
     sing: [2],
     proc: [2],
     sendMan: [2],
+    dateInitFrom: [null],
+    dateInitTo: [null],
+    dateEndFrom: [null],
+    dateEndTo: [null],
   });
   constructor(private fb: FormBuilder) {}
 
