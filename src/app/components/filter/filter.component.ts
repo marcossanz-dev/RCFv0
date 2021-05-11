@@ -9,7 +9,6 @@ export class FilterComponent implements OnInit {
   @Input() isClean = true;
 
   @Output() emitter = new EventEmitter();
-  @Output() clean = new EventEmitter();
 
   constructor() {}
 

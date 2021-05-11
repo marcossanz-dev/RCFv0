@@ -1,5 +1,11 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -28,14 +34,15 @@ export class CheckImportsTableComponent implements AfterViewInit {
 
   @ViewChild(MatSort)
   sort!: MatSort;
-  //FILTER PART (NOT HERE ONLY FOR CODE)
+
+  //TODO FILTER PART (NOT HERE ONLY FOR CODE)
   companyOptions = [{ name: 'Todos -' }];
   sendTypeOptions = [
-    { name: 'Todos' },
-    { name: 'Nueva producción' },
-    { name: 'Cartera resto seguros' },
-    { name: 'Nueva producción - tarjeta de crédito' },
-    { name: 'Periódico' },
+    { name: 'Todos', value: 0 },
+    { name: 'Nueva producción', value: 1 },
+    { name: 'Cartera resto seguros', value: 2 },
+    { name: 'Nueva producción - tarjeta de crédito', value: 3 },
+    { name: 'Periódico', value: 4 },
   ];
 
   checkboxObject = [
@@ -43,88 +50,99 @@ export class CheckImportsTableComponent implements AfterViewInit {
       name: 'Compuesto',
       formControl: 'comp',
       options: [
-        { label: 'Si', value: 0 },
-        { label: 'No', value: 1 },
-        { label: 'Todos', value: 2 },
+        { label: 'Si', value: '0' },
+        { label: 'No', value: '1' },
+        { label: 'Todos', value: '2' },
       ],
     },
     {
       name: 'Generado',
       formControl: 'gen',
       options: [
-        { label: 'Si', value: 0 },
-        { label: 'No', value: 1 },
-        { label: 'Todos', value: 2 },
+        { label: 'Si', value: '0' },
+        { label: 'No', value: '1' },
+        { label: 'Todos', value: '2' },
       ],
     },
     {
       name: 'Enviado',
       formControl: 'send',
       options: [
-        { label: 'Si', value: 0 },
-        { label: 'No', value: 1 },
-        { label: 'Todos', value: 2 },
+        { label: 'Si', value: '0' },
+        { label: 'No', value: '1' },
+        { label: 'Todos', value: '2' },
       ],
     },
     {
       name: 'Validado',
       formControl: 'val',
       options: [
-        { label: 'Si', value: 0 },
-        { label: 'No', value: 1 },
-        { label: 'Todos', value: 2 },
+        { label: 'Si', value: '0' },
+        { label: 'No', value: '1' },
+        { label: 'Todos', value: '2' },
       ],
     },
     {
       name: 'Firmado',
       formControl: 'sing',
       options: [
-        { label: 'Si', value: 0 },
-        { label: 'No', value: 1 },
-        { label: 'Todos', value: 2 },
+        { label: 'Si', value: '0' },
+        { label: 'No', value: '1' },
+        { label: 'Todos', value: '2' },
       ],
     },
     {
       name: 'Procesado',
       formControl: 'proc',
       options: [
-        { label: 'Si', value: 0 },
-        { label: 'No', value: 1 },
-        { label: 'Todos', value: 2 },
+        { label: 'Si', value: '0' },
+        { label: 'No', value: '1' },
+        { label: 'Todos', value: '2' },
       ],
     },
     {
       name: 'Envio Manual',
       formControl: 'sendMan',
       options: [
-        { label: 'Si', value: 0 },
-        { label: 'No', value: 1 },
-        { label: 'Todos', value: 2 },
+        { label: 'Si', value: '0' },
+        { label: 'No', value: '1' },
+        { label: 'Todos', value: '2' },
       ],
     },
   ];
 
-  form: FormGroup = this.fb.group({
-    company: [''],
-    sendType: [''],
-    comp: [2],
-    gen: [2],
-    send: [2],
-    val: [2],
-    sing: [2],
-    proc: [2],
-    sendMan: [2],
-    dateInitFrom: [null],
-    dateInitTo: [null],
-    dateEndFrom: [null],
-    dateEndTo: [null],
-  });
+  form: FormGroup;
   constructor(private fb: FormBuilder) {}
 
   //
+  ngOnInit() {
+    this.form = this.fb.group({
+      company: [''],
+      sendType: [''],
+      comp: ['2', [Validators.required]],
+      gen: ['2', [Validators.required]],
+      send: ['2', [Validators.required]],
+      val: ['2', [Validators.required]],
+      sing: ['2', [Validators.required]],
+      proc: ['2', [Validators.required]],
+      sendMan: ['2', [Validators.required]],
+      dateInitFrom: [null],
+      dateInitTo: [null],
+      dateEndFrom: [null],
+      dateEndTo: [null],
+    });
+  }
 
   ngAfterViewInit() {
-    //FILTROOOO
+    //TODO
+
+    this.resetForm();
+    //
+    this.dataSource.sort = this.sort;
+  }
+
+  resetForm() {
+    this.form.reset();
     this.form.controls['company'].setValue(this.companyOptions[0].name, {
       onlySelf: true,
     });
@@ -132,16 +150,21 @@ export class CheckImportsTableComponent implements AfterViewInit {
       onlySelf: true,
     });
     this.checkboxObject.forEach((item) => {
-      this.form.controls[item.formControl].markAllAsTouched();
-      this.form.controls[item.formControl].setValue(2, {
-        onlySelf: true,
-      });
+      this.form.controls[item.formControl].setValue('2');
     });
-
-    //
-    this.dataSource.sort = this.sort;
   }
 
+  //TODO Filter
+  manageButtons(event: string) {
+    if (event === 'clean') {
+      this.resetForm();
+    } else if (event === 'search') {
+      console.log(this.form);
+    } else {
+      return;
+    }
+  }
+  //
   onResizeEnd(event: ResizeEvent, columnName: any): void {
     if (event.edges?.right) {
       if (

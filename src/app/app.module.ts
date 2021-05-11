@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MenuComponent } from './components/menu/menu.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { SimpleTableComponent } from './components/simple-table/simple-table.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { MatTableModule } from '@angular/material/table';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -55,6 +56,7 @@ import {
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

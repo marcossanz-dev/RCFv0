@@ -69,7 +69,7 @@
 </table>
 
 <!--FILTROOOOO-->
-<app-filter
+<app-filter (emitter)="manageButtons($event)"
   ><form [formGroup]="form" form>
     <div class="form__selects">
       <label matLabel>Compañia:</label>
@@ -97,23 +97,27 @@
         </div>
       </div>
       <div
-        *ngFor="let item of checkboxObject; let first = first"
+        *ngFor="let item of checkboxObject; let first = first; let j = index"
         class="group-gap"
       >
         <span class="item-label">{{ item.name }}</span>
         <div class="d-block my-3">
           <div
-            *ngFor="let option of item.options; let i = index"
+            *ngFor="let option of item.options; let i = index; let last = last"
             class="custom-control custom-radio"
           >
             <input
-              attr.id="{{ option.label }}-{{ item.formControl }}"
+              attr.id="radio{{ j }}{{ i }}"
               type="radio"
               class="custom-control-input"
               [value]="option.value"
-              attr.name="{{ item.name }}"
-              [checked]="i === 2"
-              attr.formControlName="{{ item.formControl }}"
+              attr.name="{{ item.formControl }}"
+              [checked]="
+                form.controls[item.formControl].value === option.value
+                  ? true
+                  : false
+              "
+              [formControlName]="item.formControl"
             />
           </div>
         </div>
