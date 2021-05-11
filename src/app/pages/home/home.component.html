@@ -12,9 +12,6 @@
         </mat-radio-group>
         <button mat-raised-button color="accent" (click)="applyFilter()"><mat-icon aria-hidden="false">search</mat-icon><span> Buscar</span></button>
         <button mat-raised-button color="primary" (click)="cleanFilter()"><mat-icon aria-hidden="false">delete_sweep</mat-icon><span> Limpiar</span></button>
-        
-
-
     </div>
  </app-filter>
 <app-table [dataTable]="dataSource" [displayedColumns]="displayedColumns" [dataHeader]="dataHeader"></app-table>
