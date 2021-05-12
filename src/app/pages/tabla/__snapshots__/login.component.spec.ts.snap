@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Component snapshots test should be matched with initial template 1`] = `
+<app-login
+  loginForm={[Function FormGroup]}
+  loginService={[Function LoginService]}
+  router={[Function Router]}
+  spinner="false"
+>
+  <h1>
+    Login View
+  </h1><div
+    class="login__form"
+  >
+    <form
+      novalidate=""
+    >
+      <div
+        class="form-input"
+      >
+        <label
+          class="label"
+        >
+          Username
+        </label>
+        <input
+          class="general-input"
+          formcontrolname="username"
+          type="text"
+        />
+        
+      </div>
+      <div
+        class="form-input"
+      >
+        <label
+          class="label"
+        >
+          Password
+        </label>
+        <input
+          class="general-input"
+          formcontrolname="password"
+          type="password"
+        />
+        
+      </div>
+      <div
+        class="form-input"
+      >
+        <button
+          class="submit-button"
+        >
+           Enter 
+        </button>
+      </div>
+    </form>
+  </div>
+</app-login>
+`;
