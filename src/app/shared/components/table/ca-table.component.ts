@@ -11,11 +11,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ResizeEvent } from 'angular-resizable-element';
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
+  selector: 'app-ca-table',
+  templateUrl: './ca-table.component.html',
+  styleUrls: ['./ca-table.component.scss'],
 })
-export class TableComponent implements AfterViewInit, OnInit {
+export class CaTableComponent implements AfterViewInit, OnInit {
   @Input() dataHeader;
   @Input() elementData;
   displayedColumns: string[];

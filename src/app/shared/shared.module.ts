@@ -1,3 +1,4 @@
+import { FilterComponent } from './../components/filter/filter.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -17,11 +18,21 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app-routing.module';
-import { TableComponent } from './components/table/table.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CheckImportsTableComponent } from '../pages/check-imports-table/check-imports-table.component';
+import { MenuComponent } from '../components/menu/menu.component';
+import { SimpleTableComponent } from '../components/simple-table/simple-table.component';
+import { CaTableComponent } from './components/table/ca-table.component';
 
 @NgModule({
-  declarations: [TableComponent],
+  declarations: [
+    CaTableComponent,
+    FilterComponent,
+    CheckImportsTableComponent,
+    LoginComponent,
+    MenuComponent,
+    SimpleTableComponent,
+  ],
   imports: [
     CommonModule,
     BrowserModule,
@@ -41,6 +52,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [TableComponent],
+  exports: [
+    CaTableComponent,
+    FilterComponent,
+    CheckImportsTableComponent,
+    LoginComponent,
+    MenuComponent,
+    SimpleTableComponent,
+  ],
 })
 export class SharedModule {}

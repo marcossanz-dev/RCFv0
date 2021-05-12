@@ -27,33 +27,8 @@ import { ResizableModule } from 'angular-resizable-element';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MenuComponent,
-    SimpleTableComponent,
-    FilterComponent,
-    LoginComponent,
-    CheckImportsTableComponent,
-  ],
-  imports: [
-    SharedModule,
-    BrowserModule,
-    CdkTableModule,
-    MatCheckboxModule,
-    MatSortModule,
-    MatTableModule,
-    MatFormFieldModule,
-    BrowserAnimationsModule,
-    NoopAnimationsModule,
-    ResizableModule,
-    MatMenuModule,
-    AppRoutingModule,
-    MatInputModule,
-    MatSelectModule,
-    MatRadioModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+  declarations: [AppComponent],
+  imports: [AppRoutingModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
 })

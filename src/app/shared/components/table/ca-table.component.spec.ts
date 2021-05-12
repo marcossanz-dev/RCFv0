@@ -1,21 +1,21 @@
-import { SharedModule } from './../../shared.module';
+import { SharedModule } from '../../shared.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ResizeEvent } from 'angular-resizable-element';
 
-import { TableComponent } from './table.component';
+import { CaTableComponent } from './ca-table.component';
 
-describe('TableComponent', () => {
-  let component: TableComponent;
-  let fixture: ComponentFixture<TableComponent>;
+describe('CaTableComponent', () => {
+  let component: CaTableComponent;
+  let fixture: ComponentFixture<CaTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TableComponent],
+      declarations: [CaTableComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TableComponent);
+    fixture = TestBed.createComponent(CaTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -24,19 +24,19 @@ describe('TableComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-describe('TableComponent', () => {
-  let component: TableComponent;
-  let fixture: ComponentFixture<TableComponent>;
+describe('CaTableComponent', () => {
+  let component: CaTableComponent;
+  let fixture: ComponentFixture<CaTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SharedModule],
-      declarations: [TableComponent],
+      declarations: [CaTableComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TableComponent);
+    fixture = TestBed.createComponent(CaTableComponent);
     component = fixture.componentInstance;
     component.ngOnInit();
     fixture.detectChanges();

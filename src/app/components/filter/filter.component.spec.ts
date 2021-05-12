@@ -2,15 +2,14 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilterComponent } from './filter.component';
 
-describe('FilterComponent', () => {
+describe.skip('FilterComponent', () => {
   let component: FilterComponent;
   let fixture: ComponentFixture<FilterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FilterComponent ]
-    })
-    .compileComponents();
+      declarations: [FilterComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
