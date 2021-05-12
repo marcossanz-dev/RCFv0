@@ -1,4 +1,3 @@
-import { TableComponent } from '../../shared/components/table/ca-table.component';
 import { SharedModule } from './../../shared/shared.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 

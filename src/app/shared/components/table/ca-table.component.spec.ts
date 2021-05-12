@@ -1,4 +1,4 @@
-import { SharedModule } from '../../shared.module';
+import { SharedModule } from './../../shared.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ResizeEvent } from 'angular-resizable-element';
 
