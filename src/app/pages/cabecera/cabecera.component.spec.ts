@@ -1,10 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppComponent } from 'src/app/app.component';
 
 import { CabeceraComponent } from './cabecera.component';
 
 describe('CabeceraComponent', () => {
   let component: CabeceraComponent;
   let fixture: ComponentFixture<CabeceraComponent>;
+  let appComponent: AppComponent;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,7 +21,10 @@ describe('CabeceraComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should have as username testUser', () => {
+  
+    appComponent.title = "testUser";
+    expect(component.usuario).toBe("testUser");
+    
   });
 });
