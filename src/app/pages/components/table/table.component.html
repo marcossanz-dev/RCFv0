@@ -1,17 +1,17 @@
 <ng-template class="table-container" #tableRCF [ngIf]="dataTable">
-    <table mat-table matSort class="mat-elevation-z8" [dataSource]="dataTable">
+    <table mat-table matSort class="ca-table" [dataSource]="dataTable">
         <ng-container *ngFor="let key of columns" [matColumnDef]="key.tag">
             <ng-container *ngIf="key.tag !== 'DGRN'">
-                <th mat-header-cell mat-sort-header="{{key.tag}}" *matHeaderCellDef mwlResizable [enableGhostResize]="true" (resizeEnd)="onResizeEnd($event, key.tag)" [resizeEdges]="{bottom: false, right: true, top: false, left: true}">{{key.title}}</th>
+                <th mat-header-cell class="ca-table__header" mat-sort-header="{{key.tag}}" *matHeaderCellDef mwlResizable [enableGhostResize]="true" (resizeEnd)="onResizeEnd($event, key.tag)" [resizeEdges]="{bottom: false, right: true, top: false, left: true}">{{key.title}}</th>
                 <td mat-cell *matCellDef="let element"> {{element[key.tag]}}</td>
             </ng-container>
             <!-- Checkbox Column -->
             <ng-container *ngIf="key.tag === 'DGRN'">
-                <th mat-header-cell mat-sort-header *matHeaderCellDef mwlResizable [enableGhostResize]="true" (resizeEnd)="onResizeEnd($event, key.tag)" [resizeEdges]="{bottom: false, right: true, top: false, left: true}">
-                    {{key.title}}
+                <th mat-header-cell mat-sort-header class="ca-table__header" *matHeaderCellDef mwlResizable [enableGhostResize]="true" (resizeEnd)="onResizeEnd($event, key.tag)" [resizeEdges]="{bottom: false, right: true, top: false, left: true}">
+                   <span class="ca-table__cell-text">{{key.title}}</span> 
                 </th>
-                <td mat-cell *matCellDef="let element">
-                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ?  selection.toggle(element) : null" [checked]="element.DGRN" disabled>
+                <td mat-cell class="ca-table__cell" *matCellDef="let element">
+                    <mat-checkbox class="ca-table__checkbox" (click)="$event.stopPropagation()" (change)="$event ?  selection.toggle(element) : null" [checked]="element.DGRN" disabled>
                     </mat-checkbox>
                 </td>
             </ng-container>

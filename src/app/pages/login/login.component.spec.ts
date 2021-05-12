@@ -15,6 +15,7 @@ import { AppComponent } from 'src/app/app.component';
 import { FilterComponent } from '../components/filter/filter.component';
 import { TableComponent } from '../components/table/table.component';
 import { HomeComponent } from '../home/home.component';
+import { SharedModule } from '../shared.module';
 
 import { LoginComponent } from './login.component';
 
@@ -25,24 +26,9 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent,
-        LoginComponent,
-        TableComponent,
-        HomeComponent,
-        FilterComponent
       ],
       imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatTableModule,
-        MatCheckboxModule,
-        MatSortModule,
-        ResizableModule,
-        FormsModule,
-        MatInputModule,
-        MatButtonModule,
-        MatRadioModule,
-        MatFormFieldModule,
-        MatIconModule
+        SharedModule
       ]
     })
     .compileComponents();

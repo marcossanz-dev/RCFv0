@@ -5,6 +5,7 @@
             <mat-label></mat-label>
             <input matInput [(ngModel)]="searchKey" placeholder="">
         </mat-form-field>
+        <span>Notificación DGRN: </span>
         <mat-radio-group name="filter" [(ngModel)]="selectedOption">
             <mat-radio-button *ngFor="let op of notificationType" name="filter" [value]="op"  style="margin: 10px">
               {{op}}
