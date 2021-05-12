@@ -36,6 +36,42 @@ export class CheckImportsTableComponent implements AfterViewInit {
   sort!: MatSort;
 
   //TODO FILTER PART (NOT HERE ONLY FOR CODE)
+  actionCheckBox = [
+    {
+      title: 'Fragmentado',
+      value: '0',
+    },
+    {
+      title: 'Rechazado',
+      value: '1',
+    },
+    {
+      title: 'Aceptado',
+      value: '2',
+    },
+    {
+      title: 'Sin procesar',
+      value: '3',
+    },
+    {
+      title: 'Todos',
+      value: '4',
+    },
+  ];
+  importCheckBox = [
+    {
+      title: 'Si',
+      value: '0',
+    },
+    {
+      title: 'No',
+      value: '1',
+    },
+    {
+      title: 'Todos',
+      value: '2',
+    },
+  ];
   companyOptions = [{ name: 'Todos -' }];
   sendTypeOptions = [
     { name: 'Todos', value: 0 },
@@ -112,6 +148,7 @@ export class CheckImportsTableComponent implements AfterViewInit {
   ];
 
   form: FormGroup;
+  formImport: FormGroup;
   constructor(private fb: FormBuilder) {}
 
   //
@@ -131,12 +168,19 @@ export class CheckImportsTableComponent implements AfterViewInit {
       dateEndFrom: [null],
       dateEndTo: [null],
     });
+    //TODO Filtro importaciones
+    this.formImport = this.fb.group({
+      action: ['4'],
+      import: ['2'],
+      pendingFile: [false],
+    });
   }
 
   ngAfterViewInit() {
     //TODO
 
     this.resetForm();
+    this.resetFormImp();
     //
     this.dataSource.sort = this.sort;
   }
@@ -154,12 +198,28 @@ export class CheckImportsTableComponent implements AfterViewInit {
     });
   }
 
+  resetFormImp() {
+    this.formImport.reset();
+    this.formImport.controls['action'].setValue('4');
+    this.formImport.controls['import'].setValue('2');
+  }
+
   //TODO Filter
   manageButtons(event: string) {
     if (event === 'clean') {
       this.resetForm();
     } else if (event === 'search') {
       console.log(this.form);
+    } else {
+      return;
+    }
+  }
+
+  manageButtonsImp(event: string) {
+    if (event === 'clean') {
+      this.resetFormImp();
+    } else if (event === 'search') {
+      console.log(this.formImport);
     } else {
       return;
     }

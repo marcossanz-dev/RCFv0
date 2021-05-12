@@ -40,12 +40,7 @@ describe('AppComponent functions', () => {
         ReactiveFormsModule,
         RouterTestingModule,
       ],
-      declarations: [
-        AppComponent,
-        LoginComponent,
-        SimpleTableComponent,
-        CheckImportsTableComponent,
-      ],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 

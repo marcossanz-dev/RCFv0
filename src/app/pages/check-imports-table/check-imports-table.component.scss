@@ -129,3 +129,32 @@ form {
     flex-direction: column;
   }
 }
+.form__action,
+.form__import,
+.form__pending {
+  display: flex;
+  flex-direction: row;
+  padding-left: 0.6563rem;
+  label,
+  .custom-radio,
+  .form__pending-check {
+    align-self: center;
+  }
+  .custom-control-label,
+  label {
+    margin-top: 3px;
+  }
+}
+
+.margin-left,
+.form__pending {
+  margin-left: 1rem;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.form__pending-check-box {
+  margin-bottom: 0;
+}

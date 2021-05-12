@@ -160,3 +160,60 @@
       </div>
     </div></form
 ></app-filter>
+
+<app-filter (emitter)="manageButtonsImp($event)"
+  ><form [formGroup]="formImport" form>
+    <div class="form__action">
+      <label>Acción:</label>
+      <div class="d-flex">
+        <div
+          *ngFor="let element of actionCheckBox; let i = index"
+          class="custom-control custom-radio"
+        >
+          <input
+            attr.id="radioA{{ i }}"
+            type="radio"
+            class="custom-control-input mt-0"
+            [value]="element.value"
+            name="action"
+            formControlName="action"
+          />
+          <label class="custom-control-label" attr.for="radioA{{ i }}">{{
+            element.title
+          }}</label>
+        </div>
+      </div>
+    </div>
+    <div class="form__import margin-left">
+      <label>Importado:</label>
+      <div class="d-flex">
+        <div
+          *ngFor="let element of importCheckBox; let i = index"
+          class="custom-control custom-radio"
+        >
+          <input
+            attr.id="radioI{{ i }}"
+            type="radio"
+            class="custom-control-input mt-0"
+            [value]="element.value"
+            name="import"
+            formControlName="import"
+          />
+          <label class="custom-control-label" attr.for="radioI{{ i }}">{{
+            element.title
+          }}</label>
+        </div>
+      </div>
+    </div>
+    <div class="form__pending">
+      <div class="form__pending-check">
+        <input
+          class="form__pending-check-box"
+          type="checkbox"
+          formControlName="pendingFile"
+        />
+        <label>Ficheros pendientes</label>
+      </div>
+    </div>
+  </form></app-filter
+>
