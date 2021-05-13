@@ -135,7 +135,7 @@ export class CheckImportsTableComponent implements AfterViewInit {
 
   form: FormGroup;
   formImport: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   //
   ngOnInit() {

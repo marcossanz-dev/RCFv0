@@ -1,11 +1,8 @@
-<app-ca-table
-  [dataHeader]="dataHeader"
-  [elementData]="elementData"
-></app-ca-table>
+<app-ca-table [dataHeader]="dataHeader" [elementData]="elementData"></app-ca-table>
 
 <!--FILTROOOOO-->
-<app-filter (emitter)="manageButtons($event)"
-  ><form [formGroup]="form" form>
+<app-filter (emitter)="manageButtons($event)">
+  <form [formGroup]="form" form>
     <div class="form__selects">
       <label matLabel>Compañia:</label>
       <select [formControlName]="'company'">
@@ -23,39 +20,36 @@
     <div class="form__radio">
       <div class="group-gap">
         <div class="d-block my-3 label-margin">
-          <div
-            *ngFor="let option of checkboxObject[0].options"
-            class="custom-control custom-radio"
-          >
+          <div *ngFor="let option of checkboxObject[0].options" class="custom-control custom-radio">
             <label class="custom-control-label-radio">{{ option.label }}</label>
           </div>
         </div>
       </div>
-      <div
-        *ngFor="let item of checkboxObject; let first = first; let j = index"
-        class="group-gap"
-      >
-        <span class="item-label">{{ item.name }}</span>
-        <div class="d-block my-3">
-          <div
-            *ngFor="let option of item.options; let i = index; let last = last"
-            class="custom-control custom-radio"
-          >
-            <input
-              attr.id="radio{{ j }}{{ i }}"
-              type="radio"
-              class="custom-control-input"
-              [value]="option.value"
-              attr.name="{{ item.formControl }}"
-              [checked]="
+      <div *ngFor="let item of checkboxObject; let first = first; let j = index" class="group-gap">
+        <mat-radio-group [formControlName]="item.formControl">
+          <span class="item-label">{{item.name}}</span>
+          <div class="d-block my-3">
+            <div *ngFor="let option of item.options; let i = index; let last = last"
+              class="custom-control custom-radio">
+              <mat-radio-button attr.id="radioA{{ i }}" class="custom-control-input mt-0" [value]="option.value"
+                style="margin: 1px;" attr.name="{{item.formControl}}" [checked]="
                 form.controls[item.formControl].value === option.value
                   ? true
                   : false
-              "
-              [formControlName]="item.formControl"
-            />
+              " >
+              </mat-radio-button>
+            </div>
           </div>
-        </div>
+        </mat-radio-group>
+
+        <!--<div *ngFor="let option of item.options; let i = index; let last = last" class="custom-control custom-radio">
+            <input attr.id="radio{{ j }}{{ i }}" type="radio" class="custom-control-input" [value]="option.value"
+              attr.name="{{ item.formControl }}" [checked]="
+                form.controls[item.formControl].value === option.value
+                  ? true
+                  : false
+              " [formControlName]="item.formControl" />
+          </div>-->
       </div>
     </div>
     <div class="form__dates">
@@ -65,90 +59,47 @@
       </div>
       <div class="form__dates-inputs-init">
         <label>Inicio período</label>
-        <input
-          type="date"
-          id="dateInitFrom"
-          name="dateInitFrom"
-          formControlName="dateInitFrom"
-        />
-        <input
-          type="date"
-          id="dateInitTo"
-          name="dateInitTo"
-          formControlName="dateInitTo"
-        />
+        <input type="date" id="dateInitFrom" name="dateInitFrom" formControlName="dateInitFrom" />
+        <input type="date" id="dateInitTo" name="dateInitTo" formControlName="dateInitTo" />
       </div>
       <div class="form__dates-inputs-end">
         <label>Inicio período</label>
-        <input
-          type="date"
-          id="dateEndFrom"
-          name="dateEndFrom"
-          formControlName="dateEndFrom"
-        />
-        <input
-          type="date"
-          id="dateEndTo"
-          name="dateEndTo"
-          formControlName="dateEndTo"
-        />
+        <input type="date" id="dateEndFrom" name="dateEndFrom" formControlName="dateEndFrom" />
+        <input type="date" id="dateEndTo" name="dateEndTo" formControlName="dateEndTo" />
       </div>
-    </div></form
-></app-filter>
+    </div>
+  </form>
+</app-filter>
 
-<app-filter (emitter)="manageButtonsImp($event)"
-  ><form [formGroup]="formImport" form>
-    <div class="form__action">
-      <label>Acción:</label>
+<app-filter (emitter)="manageButtonsImp($event)">
+  <form [formGroup]="formImport" form>
+    <mat-radio-group formControlName="action" class="form__action">
+      <label>Acción: </label>
       <div class="d-flex">
-        <div
-          *ngFor="let element of actionCheckBox; let i = index"
-          class="custom-control custom-radio"
-        >
-          <input
-            attr.id="radioA{{ i }}"
-            type="radio"
-            class="custom-control-input mt-0"
-            [value]="element.value"
-            name="action"
-            formControlName="action"
-          />
-          <label class="custom-control-label" attr.for="radioA{{ i }}">{{
-            element.title
-          }}</label>
+        <div *ngFor="let element of actionCheckBox; let i = index" class="custom-control custom-radio">
+          <mat-radio-button attr.id="radioA{{ i }}" class="custom-control-input mt-0" [value]="element.value"
+            style="margin: 1px;">
+            <label class="custom-control-label" attr.for="radioA{{ i }}">{{element.title}}</label>
+          </mat-radio-button>
         </div>
       </div>
-    </div>
-    <div class="form__import margin-left">
-      <label>Importado:</label>
+    </mat-radio-group>
+    <mat-radio-group formControlName="import" class="form__import margin-left">
+      <label>Importado: </label>
       <div class="d-flex">
-        <div
-          *ngFor="let element of importCheckBox; let i = index"
-          class="custom-control custom-radio"
-        >
-          <input
-            attr.id="radioI{{ i }}"
-            type="radio"
-            class="custom-control-input mt-0"
-            [value]="element.value"
-            name="import"
-            formControlName="import"
-          />
-          <label class="custom-control-label" attr.for="radioI{{ i }}">{{
-            element.title
-          }}</label>
+        <div *ngFor="let element of actionCheckBox; let i = index" class="custom-control custom-radio">
+          <mat-radio-button attr.id="radioI{{ i }}" class="custom-control-input mt-0" [value]="element.value"
+            style="margin: 1px;">
+            <label class="custom-control-label" attr.for="radioI{{ i }}">{{element.title}}</label>
+          </mat-radio-button>
         </div>
       </div>
-    </div>
+    </mat-radio-group>
     <div class="form__pending">
       <div class="form__pending-check">
-        <input
-          class="form__pending-check-box"
-          type="checkbox"
-          formControlName="pendingFile"
-        />
+        <input class="form__pending-check-box" type="checkbox" formControlName="pendingFile" />
         <label>Ficheros pendientes</label>
       </div>
     </div>
-  </form></app-filter
->
+  </form>
+</app-filter>
