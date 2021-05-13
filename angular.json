@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "cli": {
         "analytics": false
@@ -11,6 +12,50 @@
             "schematics": {
                 "@schematics/angular:component": {
                     "style": "scss"
+=======
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "9d51efde-998b-42aa-882b-149ab4c4800a"
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "RCFv0": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/RCFv0",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+>>>>>>> feature/nataliadiego
                 }
             },
             "root": "",

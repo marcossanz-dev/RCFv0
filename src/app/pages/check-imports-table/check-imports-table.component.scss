@@ -1,0 +1,86 @@
+//FILTROOOOO
+.form__selects {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.6563rem;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  font-size: 10px;
+}
+
+.custom-radio {
+  display: flex;
+  justify-content: center;
+}
+
+.group-gap {
+  &:first-of-type {
+    margin: 0 4px 0 16px;
+  }
+  margin: 0 4.5px;
+}
+
+.label-margin {
+  margin-top: 13px;
+  line-height: 17px;
+}
+
+.form__radio {
+  display: flex;
+  flex-direction: row;
+}
+
+.custom-control-label-radio {
+  min-width: 37px;
+  text-align: end;
+}
+
+.form__dates {
+  display: flex;
+  flex-direction: row;
+  margin-left: 2rem;
+  .form__dates-labels {
+    display: flex;
+    flex-direction: column;
+    margin-top: 14px;
+    line-height: 25px;
+  }
+
+  .form__dates-inputs-init,
+  .form__dates-inputs-end {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.form__action,
+.form__import,
+.form__pending {
+  display: flex;
+  flex-direction: row;
+  padding-left: 0.6563rem;
+  label,
+  .custom-radio,
+  .form__pending-check {
+    align-self: center;
+  }
+  .custom-control-label,
+  label {
+    margin-top: 3px;
+  }
+}
+
+.margin-left,
+.form__pending {
+  margin-left: 1rem;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.form__pending-check-box {
+  margin-bottom: 0;
+}
