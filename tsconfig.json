@@ -19,16 +19,8 @@
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
-<<<<<<< HEAD
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true,
-    "strictPropertyInitialization": false
-
-=======
     "strictInjectionParameters": false,
     "strictInputAccessModifiers": false,
     "strictTemplates": false
->>>>>>> feature/nataliadiego
   }
 }
