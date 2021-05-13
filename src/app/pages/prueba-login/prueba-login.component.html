@@ -1,0 +1,36 @@
+<!-- *ngIf='!isLogged; else buttonLoggout' -->
+
+<!-- para que desaparezca el loggin etc etc -->
+
+<div  class="content" cdkDrag>
+  <div id="titleLogin">Identificación de usuario</div>
+  <div class="contentForm">
+    <div id="imagenForm">IMAGEN</div>
+    <form 
+    class="form" 
+    [formGroup]="formLoginPrueba">
+      <div class="form-input">
+        <label>Usuario:</label>
+        <input
+        formControlName="username"
+        required
+        placeholder="Usuario">
+      </div>
+      <div class="form-input">
+        <label>Contraseña:</label> 
+        <input 
+        type="password" 
+        formControlName="password"
+        required
+        placeholder="Contraseña">
+      </div>
+      <div class="button">
+        <button id="buttonEntrar"
+          (click)="onLogin()">
+          <img src="" alt="">
+          Entrar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

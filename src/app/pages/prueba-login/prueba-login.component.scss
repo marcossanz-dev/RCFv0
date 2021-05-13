@@ -1,0 +1,69 @@
+.content{
+  border: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: move;
+  border-radius: 4px;
+  z-index: 1;
+  transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+              0 2px 2px 0 rgba(0, 0, 0, 0.14),
+              0 1px 5px 0 rgba(0, 0, 0, 0.12);
+
+
+  background-color: #99cccc;
+  padding: 2px;
+  width: 350px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 10% auto;
+
+  #titleLogin{
+    height: 25px;
+    margin-left: 10px;
+  }
+  .contentForm{
+    background-color: white;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    font-size: 14px;
+    .form{
+      padding: 5px;
+      .form-input{    
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        label{
+          text-align: right;
+        }
+        input{
+          width: 140px;
+          margin-left: 5px;
+          border-radius: 5px;
+          border: 1px solid #99cccc;
+          outline: none;
+        }
+      }
+      .button{
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        height: 88px;
+        #buttonEntrar{
+          background-color: #ffa245;
+          color: white;
+          border: 1px solid #ffa245;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.content:active{
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}

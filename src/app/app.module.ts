@@ -20,6 +20,9 @@ import { ResizableModule } from 'angular-resizable-element';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PruebaLoginComponent } from './pages/prueba-login/prueba-login.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CheckImportsTableComponent,
     MenuComponent,
     SimpleTableComponent,
+    PruebaLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatMenuModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    DragDropModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
