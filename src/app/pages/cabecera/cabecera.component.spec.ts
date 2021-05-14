@@ -1,30 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Input } from '@angular/core';
+import { ComponentFixture, InjectSetupWrapper, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { AppComponent } from 'src/app/app.component';
-
 import { CabeceraComponent } from './cabecera.component';
 
 describe('CabeceraComponent', () => {
   let component: CabeceraComponent;
-  let fixture: ComponentFixture<CabeceraComponent>;
-  let appComponent: AppComponent;
+  let cabecerafixture: ComponentFixture<CabeceraComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CabeceraComponent ]
     })
     .compileComponents();
+    cabecerafixture = TestBed.createComponent(CabeceraComponent);
+    component = cabecerafixture.componentInstance;
   });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CabeceraComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should have as username testUser', () => {
   
-    appComponent.title = "testUser";
-    expect(component.usuario).toBe("testUser");
+  it('should render username as testUser', () => {
+    component.usuario = 'testUser';
+    cabecerafixture.detectChanges();
+    
+    cabecerafixture.debugElement.nativeElement.textContent;
+    expect(cabecerafixture.debugElement.nativeElement.textContent).toContain('testUser');
     
   });
 });

@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CabeceraComponent implements OnInit {
 
-  @Input() usuario: string;
+  @Input() usuario: string = "";
 
   constructor() { }
 

@@ -10,9 +10,10 @@ import {
   BrowserAnimationsModule,
   NoopAnimationsModule,
 } from '@angular/platform-browser/animations';
-import { ResizableModule, ResizeEvent } from 'angular-resizable-element';
+
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
+import { ResizableModule, ResizeEvent } from 'angular-resizable-element';
 
 describe('CheckImportsTableComponent', () => {
   let component: CheckImportsTableComponent;

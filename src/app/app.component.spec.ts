@@ -13,11 +13,11 @@ import {
   BrowserAnimationsModule,
   NoopAnimationsModule,
 } from '@angular/platform-browser/animations';
-import { ResizableModule } from 'angular-resizable-element';
 import { MatMenuModule } from '@angular/material/menu';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser'
 import { CheckImportsTableComponent } from './pages/check-imports-table/check-imports-table.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ResizableModule } from 'angular-resizable-element';
 
 describe('AppComponent functions', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -58,10 +58,5 @@ describe('AppComponent functions', () => {
     expect(component).toBeTruthy();
   });
 
-  test(`should have as title 'RCFv0'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('RCFv0');
-  });
 
 });
